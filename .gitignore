@@ -1,0 +1,16 @@
+.venv/
+/data/
+__pycache__/
+*.pyc
+.kubeconfig*
+*.log
+.venv
+.DS_Store
+
+/v2/runs/**/jobs.json
+/v2/runs/**/answers*.jsonl
+/v2/runs/**/intents*.jsonl
+
+/v2/runs/**/results.json
+/v2/verification.json
+/v2/reports/audit/historical-reanalysis/

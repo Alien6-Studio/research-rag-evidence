@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "Please cite this study and its archived evidence."
+type: software
+title: "Alien6 Research: Evidence preservation in RAG"
+authors:
+  - name: "Alien6 Studio"
+    website: "https://alien6.com"
+repository-code: "https://github.com/Alien6-Studio/research-rag-evidence"
+url: "https://github.com/Alien6-Studio/research-rag-evidence"
+license: Apache-2.0
+keywords:
+  - reproducible research
+  - retrieval augmented generation
+  - large language models

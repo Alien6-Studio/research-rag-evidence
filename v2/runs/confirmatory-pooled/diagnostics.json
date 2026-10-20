@@ -1,0 +1,287 @@
+{
+  "environment": "pooled",
+  "analysis_role": "descriptive diagnostics, not additional confirmatory hypotheses",
+  "semantic_caution": "Annotation gaps, zero exact matches, and missing annotated citations are review flags, not established factual errors or hallucinations. Complete annotated context is not documentary faithfulness.",
+  "arms": [
+    {
+      "configuration": "bm25:diverse:1536",
+      "deterministic_questions": 256,
+      "deterministic_flags": {
+        "retrieval_annotation_gap": 66,
+        "packing_loses_retrieved_annotations": 1,
+        "complete_retrieval_but_incomplete_context": 1,
+        "complete_annotated_context": 189
+      },
+      "generation_questions": 0,
+      "generation_flags": {},
+      "coverage_exact_match_table": [
+        {
+          "complete_context": 0,
+          "exact_match": 0,
+          "questions": 0
+        },
+        {
+          "complete_context": 0,
+          "exact_match": 1,
+          "questions": 0
+        },
+        {
+          "complete_context": 1,
+          "exact_match": 0,
+          "questions": 0
+        },
+        {
+          "complete_context": 1,
+          "exact_match": 1,
+          "questions": 0
+        }
+      ],
+      "question_flags": []
+    },
+    {
+      "configuration": "bm25:diverse:512",
+      "deterministic_questions": 256,
+      "deterministic_flags": {
+        "retrieval_annotation_gap": 66,
+        "packing_loses_retrieved_annotations": 95,
+        "complete_retrieval_but_incomplete_context": 81,
+        "complete_annotated_context": 109
+      },
+      "generation_questions": 0,
+      "generation_flags": {},
+      "coverage_exact_match_table": [
+        {
+          "complete_context": 0,
+          "exact_match": 0,
+          "questions": 0
+        },
+        {
+          "complete_context": 0,
+          "exact_match": 1,
+          "questions": 0
+        },
+        {
+          "complete_context": 1,
+          "exact_match": 0,
+          "questions": 0
+        },
+        {
+          "complete_context": 1,
+          "exact_match": 1,
+          "questions": 0
+        }
+      ],
+      "question_flags": []
+    },
+    {
+      "configuration": "bm25:ranked:1536",
+      "deterministic_questions": 256,
+      "deterministic_flags": {
+        "retrieval_annotation_gap": 66,
+        "packing_loses_retrieved_annotations": 1,
+        "complete_retrieval_but_incomplete_context": 1,
+        "complete_annotated_context": 189
+      },
+      "generation_questions": 0,
+      "generation_flags": {},
+      "coverage_exact_match_table": [
+        {
+          "complete_context": 0,
+          "exact_match": 0,
+          "questions": 0
+        },
+        {
+          "complete_context": 0,
+          "exact_match": 1,
+          "questions": 0
+        },
+        {
+          "complete_context": 1,
+          "exact_match": 0,
+          "questions": 0
+        },
+        {
+          "complete_context": 1,
+          "exact_match": 1,
+          "questions": 0
+        }
+      ],
+      "question_flags": []
+    },
+    {
+      "configuration": "bm25:ranked:512",
+      "deterministic_questions": 256,
+      "deterministic_flags": {
+        "retrieval_annotation_gap": 66,
+        "packing_loses_retrieved_annotations": 89,
+        "complete_retrieval_but_incomplete_context": 75,
+        "complete_annotated_context": 115
+      },
+      "generation_questions": 0,
+      "generation_flags": {},
+      "coverage_exact_match_table": [
+        {
+          "complete_context": 0,
+          "exact_match": 0,
+          "questions": 0
+        },
+        {
+          "complete_context": 0,
+          "exact_match": 1,
+          "questions": 0
+        },
+        {
+          "complete_context": 1,
+          "exact_match": 0,
+          "questions": 0
+        },
+        {
+          "complete_context": 1,
+          "exact_match": 1,
+          "questions": 0
+        }
+      ],
+      "question_flags": []
+    },
+    {
+      "configuration": "dense:diverse:1536",
+      "deterministic_questions": 256,
+      "deterministic_flags": {
+        "retrieval_annotation_gap": 18,
+        "packing_loses_retrieved_annotations": 0,
+        "complete_retrieval_but_incomplete_context": 0,
+        "complete_annotated_context": 238
+      },
+      "generation_questions": 0,
+      "generation_flags": {},
+      "coverage_exact_match_table": [
+        {
+          "complete_context": 0,
+          "exact_match": 0,
+          "questions": 0
+        },
+        {
+          "complete_context": 0,
+          "exact_match": 1,
+          "questions": 0
+        },
+        {
+          "complete_context": 1,
+          "exact_match": 0,
+          "questions": 0
+        },
+        {
+          "complete_context": 1,
+          "exact_match": 1,
+          "questions": 0
+        }
+      ],
+      "question_flags": []
+    },
+    {
+      "configuration": "dense:diverse:512",
+      "deterministic_questions": 256,
+      "deterministic_flags": {
+        "retrieval_annotation_gap": 18,
+        "packing_loses_retrieved_annotations": 43,
+        "complete_retrieval_but_incomplete_context": 43,
+        "complete_annotated_context": 195
+      },
+      "generation_questions": 0,
+      "generation_flags": {},
+      "coverage_exact_match_table": [
+        {
+          "complete_context": 0,
+          "exact_match": 0,
+          "questions": 0
+        },
+        {
+          "complete_context": 0,
+          "exact_match": 1,
+          "questions": 0
+        },
+        {
+          "complete_context": 1,
+          "exact_match": 0,
+          "questions": 0
+        },
+        {
+          "complete_context": 1,
+          "exact_match": 1,
+          "questions": 0
+        }
+      ],
+      "question_flags": []
+    },
+    {
+      "configuration": "dense:ranked:1536",
+      "deterministic_questions": 256,
+      "deterministic_flags": {
+        "retrieval_annotation_gap": 18,
+        "packing_loses_retrieved_annotations": 0,
+        "complete_retrieval_but_incomplete_context": 0,
+        "complete_annotated_context": 238
+      },
+      "generation_questions": 0,
+      "generation_flags": {},
+      "coverage_exact_match_table": [
+        {
+          "complete_context": 0,
+          "exact_match": 0,
+          "questions": 0
+        },
+        {
+          "complete_context": 0,
+          "exact_match": 1,
+          "questions": 0
+        },
+        {
+          "complete_context": 1,
+          "exact_match": 0,
+          "questions": 0
+        },
+        {
+          "complete_context": 1,
+          "exact_match": 1,
+          "questions": 0
+        }
+      ],
+      "question_flags": []
+    },
+    {
+      "configuration": "dense:ranked:512",
+      "deterministic_questions": 256,
+      "deterministic_flags": {
+        "retrieval_annotation_gap": 18,
+        "packing_loses_retrieved_annotations": 31,
+        "complete_retrieval_but_incomplete_context": 30,
+        "complete_annotated_context": 208
+      },
+      "generation_questions": 0,
+      "generation_flags": {},
+      "coverage_exact_match_table": [
+        {
+          "complete_context": 0,
+          "exact_match": 0,
+          "questions": 0
+        },
+        {
+          "complete_context": 0,
+          "exact_match": 1,
+          "questions": 0
+        },
+        {
+          "complete_context": 1,
+          "exact_match": 0,
+          "questions": 0
+        },
+        {
+          "complete_context": 1,
+          "exact_match": 1,
+          "questions": 0
+        }
+      ],
+      "question_flags": []
+    }
+  ]
+}

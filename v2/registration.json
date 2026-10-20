@@ -1,0 +1,38 @@
+{
+  "registered_utc": "2026-11-13T06:10:14.587732+00:00",
+  "historical_commit": "066be354481550e73d7c8336a8f4768328fe19a3",
+  "files": {
+    "v2/PROTOCOL.md": "5ae7b28422b7d5dab4f1de245062860b68bd8a1f131650d4557136f556a59ccf",
+    "v2/__init__.py": "1fd671f6c50b24b10460587ca7fa7018e3d17f66262807b6e368b3516be85762",
+    "v2/analysis.py": "fc599710762e99f0ae651c13ebafed6ee5dc1723055fd223201bc0a77748136e",
+    "v2/benchmark.py": "c55b1697bf90730c23f3d43aa23ee76864978e0d1c48b030fd01cba423ae458f",
+    "v2/core.py": "0a342f0cc805a67c5a6981da10249dbe89ad2c67a594aa78c31f6df09f313899",
+    "v2/data/cohorts.json": "cf14a7ac3cd062be66d49e02109cc5afa9b63e04dd49561c186e0b88697f4053",
+    "v2/data/power-planning.json": "88a7c1b889f7783bd9cc08aee041b455b4e9bc107cbcc84fbe79a19f4ab9991c",
+    "v2/test_v2.py": "68e29a0b3de73a9dbebe922a0824368de0f0aa57a46dfef5c83d5c4c09ceceb1"
+  },
+  "sources_sha256": "5dcf2a109f9847c0dd654d662895875caa8bfda683b11f490fe99d073d4460a7",
+  "original_generator_source_sha256": "9028549e2d3e165bdffa7c5704d565ed0ebeeca3e170184571198ed72a5f4bfa",
+  "models": {
+    "generator": [
+      "qwen3.6:latest",
+      "07d35212591fc27746f0a317c975a6d68754fb38e9053d82e25f06057af28522"
+    ],
+    "embedding": [
+      "nomic-embed-text:latest",
+      "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f"
+    ],
+    "judge": [
+      "dolphin3:latest",
+      "d5ab9ae8e1f22619a6be52e5694df422b7183a3883990a000188c363781ecb78"
+    ]
+  },
+  "generation_options": {
+    "temperature": 0,
+    "seed": 20261112,
+    "num_ctx": 8192,
+    "num_predict": 256,
+    "num_thread": 8
+  },
+  "source_provenance": "Commit this registration and all frozen files to the dedicated public branch before any V2 outcome collection. Dates are actual registration dates."
+}

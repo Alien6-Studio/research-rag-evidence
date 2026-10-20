@@ -1,0 +1,11 @@
+{
+  "utc": "2026-11-13T06:13:45.002258+00:00",
+  "passed": true,
+  "questions": 8,
+  "configurations": 64,
+  "errors": 0,
+  "registration_sha256": "8ec6ba0658380f7f2f7fc296fd6b8406eb658580c8e252ea2f941dfc76007254",
+  "jobs_sha256": "3c481007736243e6c1934740b9833af146577b5f5cd4d4dab9fab3f84d0c20b3",
+  "answers_sha256": "a87a9ef546b80757c4e5fd19a7c3b8f2f91351fa7ef10229ebd87814f8d652c3",
+  "criterion": "All 64 planned requests archived once, untruncated, instruction-consistent JSON, with exact prepared requests; no answer-quality or exact-match threshold."
+}
