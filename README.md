@@ -1,57 +1,61 @@
-# Préservation des preuves dans une chaîne RAG
+# Evidence preservation in RAG
 
-Recherche associée à l’article Alien6 conservé à l’URL
-`/fr/research/articles/audit-architecture-rag/`.
+[![Research CI](https://github.com/Alien6-Studio/research-rag-evidence/actions/workflows/ci.yml/badge.svg)](https://github.com/Alien6-Studio/research-rag-evidence/actions/workflows/ci.yml)
+[![Code license: Apache-2.0](https://img.shields.io/badge/code%20license-Apache--2.0-blue)](LICENSE)
 
-**Question :** dans quelles conditions retrouver les bonnes sources conduit-il à
-une réponse effectivement étayée ?
 
-## État du travail
+An empirical study for the existing Alien6 article at
+`/en/research/articles/rag-architecture-audit/`.
 
-La collecte principale est effectuée : 64 questions, 512 configurations de
-réponse et aucune erreur de lecture JSON. Les contrôles, répétitions et analyses
-complètent cette collecte. La validité du format ne préjuge pas de l’exactitude
-ou de la fidélité des réponses. [Les preuves sont indexées ici](EVIDENCE.md).
+**Research question:** when does finding the right sources lead to an answer
+that is actually supported by those sources?
 
-- [Protocole](PROTOCOL.md) : hypothèses, variables, mesures et limites.
-- [Chaîne expérimentale](run.py) : segmentation, indexation, recherche BM25 et
-  dense, sélection sous budget, génération Ollama, évaluation et contrôle du juge.
-- [Tests](test_run.py) : coordonnées des preuves, budgets, absence d’utilisation
-  des annotations par la sélection et règles de score.
-- [Sources figées](sources.json) et [dépendances](requirements-lock.txt).
-- `runs/` : configurations, sorties brutes et mesures de chaque campagne.
+## Current status
 
-La première campagne porte sur 64 questions HotpotQA, soit 512 configurations de
-génération. Elle utilise les dix paragraphes fournis pour chaque question dans
-le cadre *distractor*, pas une recherche sur tout Wikipédia. Les modèles sont
-servis localement par Ollama ; leurs empreintes sont vérifiées à l’exécution.
+The primary collection is complete: **64 distinct questions and 512 answer
+configurations**, with no JSON parsing failures. An additional 32 diagnostic
+controls and two repeat passes of 128 answers each have been collected.
+The separate document-faithfulness evaluation is complete; analysis follows.
+A valid output format does not establish answer correctness or faithfulness.
+[The evidence index](EVIDENCE.md) explains the retained records.
 
-## Exécution
+- [Protocol](PROTOCOL.md): hypotheses, variables, measurements, and limits.
+- [Experiment executable](run.py): segmentation, indexing, BM25 and dense
+  retrieval, context selection, Ollama generation, and evaluation.
+- [Tests](test_run.py): original evidence coordinates, context budgets,
+  annotation isolation, and scoring rules.
+- [Pinned sources](sources.json) and [dependencies](requirements-lock.txt).
+- [Raw runs](runs/2026-11-12-rag/): selected questions, contexts, requests,
+  responses, failures, and diagnostic controls.
+
+The first study uses HotpotQA's **distractor setting**: ten supplied paragraphs
+per question, not unrestricted search across Wikipedia. The sample contains
+32 bridge and 32 comparison questions. Model digests are checked at execution.
+
+## Reproduce
 
 ```bash
 uv venv --python 3.12
 uv pip install --python .venv/bin/python -r requirements-lock.txt
 .venv/bin/python prepare_data.py
 .venv/bin/python -m unittest discover -p 'test_*.py'
-.venv/bin/python run.py prepare
-.venv/bin/python run.py generate
-.venv/bin/python run.py controls
-.venv/bin/python run.py generate --repeat 1
-.venv/bin/python run.py generate --repeat 2
-.venv/bin/python run.py judge
+.venv/bin/python run.py prepare --out runs/new-study
+.venv/bin/python run.py generate --out runs/new-study
+.venv/bin/python run.py controls --out runs/new-study
+.venv/bin/python run.py generate --repeat 1 --out runs/new-study
+.venv/bin/python run.py generate --repeat 2 --out runs/new-study
+.venv/bin/python run.py judge --out runs/new-study
 ```
 
-Le modèle, les paramètres et les entrées doivent correspondre au protocole. Un
-échec de format ou une abstention reste dans les mesures ; le programme ne
-régénère pas une réponse pour obtenir un succès. Les données téléchargées et
-l’environnement Python restent hors de Git. Les sorties d’expériences seront
-conservées avec l’empreinte du code exécuté.
+Use the model versions and parameters recorded in the protocol. Keep new runs
+in a new directory. Parsing failures and abstentions remain in the records;
+answers are not regenerated until they pass. Downloaded inputs and the Python
+environment are excluded from Git. Each run records the executable's checksum.
 
 ## Attribution
 
-HotpotQA : Yang, Qi, Zhang et al., EMNLP 2018,
-<https://hotpotqa.github.io/>, données sous CC BY-SA 4.0. Les questions, preuves
-et extraits dérivés de ce corpus conservent cette attribution et cette licence.
-Le script officiel d’évaluation est conservé sans modification dans `vendor/`,
-avec sa licence Apache-2.0. Le tokenizer provient du dépôt officiel Qwen indiqué
-dans `sources.json`.
+HotpotQA: Yang, Qi, Zhang et al., EMNLP 2018,
+<https://hotpotqa.github.io/>, dataset under CC BY-SA 4.0. Questions, evidence,
+and derived dataset extracts retain that attribution and license. The official
+evaluator is preserved unchanged in `vendor/`, with its Apache-2.0 license.
+The tokenizer comes from the official Qwen repository pinned in `sources.json`.

@@ -1,27 +1,31 @@
-# Preuves et traçabilité
+# Evidence and provenance
 
-La collecte principale comprend **64 questions distinctes**, chacune évaluée dans
-huit configurations, soit **512 réponses effectivement générées**. Il ne s’agit
-pas de 512 questions indépendantes.
+The primary collection contains **64 distinct questions**, each evaluated in
+eight configurations, producing **512 actual model responses**. These are not
+512 independent questions.
 
-| Élément | Fichier ou dossier | Ce qu’il permet de vérifier |
+| Evidence | Location | What it establishes |
 | --- | --- | --- |
-| Protocole antérieur aux mesures | [PROTOCOL.md](PROTOCOL.md), commit `abe5f87` | Questions, variables et critères prévus |
-| Code exécuté | [run.py](run.py), empreinte dans le manifeste | Recherche, assemblage, appels et scores |
-| Entrées figées | [sources.json](sources.json) | Révisions et empreintes du corpus et du tokenizer |
-| Environnement | [requirements-lock.txt](requirements-lock.txt) | Versions Python des bibliothèques |
-| Tests de contrôle | [test_run.py](test_run.py), neuf tests | Coordonnées des preuves, budgets et règles de score |
-| Campagne principale | `runs/2026-11-12-rag/` | Questions sélectionnées, contextes, requêtes et réponses brutes |
+| Protocol registered before collection | [PROTOCOL.md](PROTOCOL.md), commit `abe5f87` | Planned questions, variables, and criteria |
+| Executed program | [run.py](run.py), checksum in the manifest | Retrieval, packing, model calls, and scores |
+| Pinned inputs | [sources.json](sources.json) | Dataset and tokenizer revisions and checksums |
+| Environment | [requirements-lock.txt](requirements-lock.txt) | Python dependency versions |
+| Control tests | [test_run.py](test_run.py), [execution record](evidence/unit-tests.json) | Evidence coordinates, budgets, and scoring rules |
+| Primary collection | [Raw run directory](runs/2026-11-12-rag/) | Selected questions, transmitted contexts, requests, and responses |
+| Diagnostic generation controls | [Control responses](runs/2026-11-12-rag/generator-controls.jsonl) | Gold-evidence and prior-knowledge conditions |
+| Faithfulness proxy and calibration controls | [Judge records](runs/2026-11-12-rag/judge.jsonl) | All 423 non-abstained answers and 32 controls; analysis pending |
+| Repeat passes | [First](runs/2026-11-12-rag/answers-repeat-1.jsonl), [second](runs/2026-11-12-rag/answers-repeat-2.jsonl) | Output stability on the same 16 questions |
 
-Le manifeste contient l’empreinte intégrale du modèle, la version d’Ollama, les
-paramètres, le commit source et l’heure de préparation. Chaque réponse conserve
-sa requête, la sortie brute du service et les durées retournées par Ollama.
+The manifest records full model digests, Ollama version, parameters, source
+commit, executable checksum, and preparation time. Each response retains the
+actual request, raw service response, and Ollama timing fields. Checksums for
+the immutable primary artifacts are in `evidence/checksums-primary.sha256`.
 
-Les contrôles de génération, répétitions et jugements documentaires sont
-enregistrés dans des fichiers séparés. Le jugement automatique est un indicateur
-à contrôler, pas une annotation humaine. Les résultats agrégés seront publiés
-avec le script qui les recalcule et les limites de la campagne.
+Document-faithfulness judgements and their gold-evidence and swapped-evidence
+controls are stored separately. An automated judge is a measured proxy, not a
+human annotation. Aggregate results are accompanied by the executable analysis
+and the study's limits.
 
-Les données dérivées de HotpotQA sont attribuées à Yang, Qi, Zhang et al. (EMNLP
-2018), sous CC BY-SA 4.0. Les empreintes garantissent l’identité des fichiers ;
-l’interprétation scientifique dépend du protocole et des contrôles décrits.
+HotpotQA-derived data is attributed to Yang, Qi, Zhang et al. (EMNLP 2018), under
+CC BY-SA 4.0. Checksums establish file identity; scientific interpretation still
+depends on the protocol and its controls.
