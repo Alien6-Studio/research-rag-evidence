@@ -25,4 +25,4 @@ tokenizers==0.22.1
 tqdm==4.70.1
 typing-extensions==4.16.0
 tzdata==2026.6
-ujson==5.11.0
+ujson==5.13.0
