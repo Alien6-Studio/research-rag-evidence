@@ -70,3 +70,18 @@ HotpotQA: Yang, Qi, Zhang et al., EMNLP 2018,
 and derived dataset extracts retain that attribution and license. The official
 evaluator is preserved unchanged in `vendor/`, with its Apache-2.0 license.
 The tokenizer comes from the official Qwen repository pinned in `sources.json`.
+
+## Article history
+
+Original article publication: **2026-10-20**. Dedicated repository and new
+experimental work: **12 November 2026**. See [the chronology](CHRONOLOGY.md)
+for the distinction between historical publication and newly collected evidence.
+
+The maintained environment patches pyarrow and ujson after concrete dependency
+alerts were reported. The exact environment used for original measurements is
+preserved in [the environment record](environments/2026-11-12-original.json)
+and the protected protocol tag. This maintenance change does not rewrite those
+measurements. The Linux portability check uses the patched versions.
+
+[Validity and limits](VALIDITY.md) separate the reproduced packing calculation
+from model-quality, hardware, timing, and sampling claims.
