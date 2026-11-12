@@ -8,9 +8,10 @@ une réponse effectivement étayée ?
 
 ## État du travail
 
-Le protocole est fixé avant collecte. Le benchmark et neuf tests de contrôle
-sont préparés. **Aucune campagne de mesure n’a encore été exécutée.** Les chiffres
-des anciens exemples synthétiques ne constituent pas les résultats de ce projet.
+La collecte principale est effectuée : 64 questions, 512 configurations de
+réponse et aucune erreur de lecture JSON. Les contrôles, répétitions et analyses
+complètent cette collecte. La validité du format ne préjuge pas de l’exactitude
+ou de la fidélité des réponses. [Les preuves sont indexées ici](EVIDENCE.md).
 
 - [Protocole](PROTOCOL.md) : hypothèses, variables, mesures et limites.
 - [Chaîne expérimentale](run.py) : segmentation, indexation, recherche BM25 et

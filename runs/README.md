@@ -1,5 +1,5 @@
-# Mesures expérimentales
+# Campagnes expérimentales
 
-Aucune campagne collectée à ce stade. Les futures campagnes conserveront les
-identifiants des questions, les entrées effectivement envoyées au modèle, les
-sorties brutes, les erreurs et les paramètres permettant de reproduire les scores.
+La campagne `2026-11-12-rag/` conserve les entrées, les réponses principales et
+les contrôles réellement exécutés. Les jugements et analyses sont ajoutés à
+mesure de leur achèvement. Voir `../EVIDENCE.md` pour les conventions de lecture.

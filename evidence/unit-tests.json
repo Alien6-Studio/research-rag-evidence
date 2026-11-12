@@ -1,0 +1,12 @@
+{
+  "started_at_utc": "2026-11-12T18:08:48.020215+00:00",
+  "command": "python -m unittest discover -p test_*.py",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.389s\n\nOK\n",
+  "source_sha256": {
+    "run.py": "9028549e2d3e165bdffa7c5704d565ed0ebeeca3e170184571198ed72a5f4bfa",
+    "prepare_data.py": "45d659fe4e095360f9a353f717c48cb64369f8296765be37f8803e9825bcd959",
+    "test_run.py": "6bee09a0fbc6b6947be7f11edf63d802e992de9a77ff4edc9805a94ac27bf111"
+  }
+}
