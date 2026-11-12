@@ -29,5 +29,7 @@ jobs:
         run: python -m unittest discover -p 'test_*.py' -v
       - name: Recheck every archived primary record
         run: python validation/audit_records.py
+      - name: Reproduce the exploratory diagnostics from public cached vectors
+        run: python extensions/deeper_analysis.py --check
       - name: Verify published evidence identity
         run: python scripts/verify_evidence.py

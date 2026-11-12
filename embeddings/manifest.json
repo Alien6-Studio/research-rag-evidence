@@ -1,0 +1,9 @@
+{
+  "exported_at_utc": "2026-11-12T19:15:26.640028+00:00",
+  "vectors": 2608,
+  "dimensions": 768,
+  "source_model_digest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f",
+  "parquet_sha256": "49a63596ba29d3268586152a655e2b59d49c270dc5ddf8593206f143de2f21cc",
+  "bytes": 15845657,
+  "scope": "Exact float64 values loaded from the original JSON cache for all study questions and 2/3/6-sentence chunks. Export time is not the original capture time. Texts are HotpotQA-derived; CC BY-SA 4.0 attribution applies."
+}
