@@ -19,7 +19,8 @@ The original 12 November 2026 experiment used pyarrow 21.0.0 and ujson 5.11.0.
 Concrete advisories were discovered after repository scanning was enabled:
 [Arrow IPC pre-buffering](https://github.com/advisories/GHSA-rgxp-2hwp-jwgg) and
 [UltraJSON parsing/serialization issues](https://github.com/advisories/GHSA-3j69-69wj-xqx2).
-The maintained requirements use pyarrow 23.0.1 and ujson 5.13.0. The Linux audit
+The maintenance security floor is pyarrow 23.0.1 and ujson 5.13.0;
+current requirements may be newer. The Linux audit
 with those versions produces the same question-level metric digest.
 
 The historical environment is retained as provenance in

@@ -5,10 +5,16 @@ updates:
     schedule:
       interval: weekly
     labels: [dependencies, github_actions]
+    groups:
+      github-actions:
+        patterns: ["*"]
     open-pull-requests-limit: 5
   - package-ecosystem: pip
     directory: /
     schedule:
       interval: weekly
     labels: [dependencies, python]
+    groups:
+      research-runtime:
+        patterns: [numpy, pyarrow, tokenizers, ujson]
     open-pull-requests-limit: 5
