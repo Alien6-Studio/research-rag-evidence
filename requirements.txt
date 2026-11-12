@@ -1,4 +1,4 @@
-tokenizers==0.22.1
+tokenizers==0.23.3
 pyarrow==23.0.1
 ujson==5.13.0
 numpy==2.3.4
