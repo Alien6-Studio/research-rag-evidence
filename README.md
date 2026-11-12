@@ -15,7 +15,8 @@ that is actually supported by those sources?
 The primary collection is complete: **64 distinct questions and 512 answer
 configurations**, with no JSON parsing failures. An additional 32 diagnostic
 controls and two repeat passes of 128 answers each have been collected.
-The separate document-faithfulness evaluation is complete; analysis follows.
+The [audited analysis](RESULTS.md) is complete, including the separate
+faithfulness-proxy controls and the limits of lexical answer scoring.
 A valid output format does not establish answer correctness or faithfulness.
 [The evidence index](EVIDENCE.md) explains the retained records.
 
@@ -32,6 +33,14 @@ The first study uses HotpotQA's **distractor setting**: ten supplied paragraphs
 per question, not unrestricted search across Wikipedia. The sample contains
 32 bridge and 32 comparison questions. Model digests are checked at execution.
 
+## Results and interpretation
+
+[Audited results](RESULTS.md) include every arm, question-level uncertainty,
+controls, a rule-selected source example, and scoring limitations.
+`analysis.py` rechecks the raw prompts, packing, hashes, and official scores
+before producing the tables and figures. Exact reference matching is not a
+complete semantic-correctness assessment.
+
 ## Reproduce
 
 ```bash
@@ -45,6 +54,8 @@ uv pip install --python .venv/bin/python -r requirements-lock.txt
 .venv/bin/python run.py generate --repeat 1 --out runs/new-study
 .venv/bin/python run.py generate --repeat 2 --out runs/new-study
 .venv/bin/python run.py judge --out runs/new-study
+# Analyse the archived campaign after preparing its pinned public inputs:
+.venv/bin/python analysis.py
 ```
 
 Use the model versions and parameters recorded in the protocol. Keep new runs
