@@ -1,0 +1,11 @@
+{
+  "utc": "2026-11-12T18:28:30.326834+00:00",
+  "command": [
+    ".venv/bin/python",
+    "analysis.py"
+  ],
+  "returncode": 0,
+  "stdout": "{\n  \"audited_questions\": 64,\n  \"audited_primary_generations\": 512,\n  \"output\": \"/private/tmp/alien6-research-rag-evidence/analysis/2026-11-12-rag\",\n  \"judge\": {\n    \"prediction\": {\n      \"supported\": 354,\n      \"unsupported\": 69\n    },\n    \"positive\": {\n      \"supported\": 12,\n      \"unsupported\": 4\n    },\n    \"swapped\": {\n      \"unsupported\": 16\n    }\n  },\n  \"example_question_id\": \"5a7299465542992359bc3131\"\n}\n",
+  "stderr": "",
+  "analysis_sha256": "ba5c851e4620fda0863d923c1477caeae67bffe3d7dd2dc353ec9e570234cb8a"
+}

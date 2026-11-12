@@ -13,7 +13,7 @@ eight configurations, producing **512 actual model responses**. These are not
 | Control tests | [test_run.py](test_run.py), [execution record](evidence/unit-tests.json) | Evidence coordinates, budgets, and scoring rules |
 | Primary collection | [Raw run directory](runs/2026-11-12-rag/) | Selected questions, transmitted contexts, requests, and responses |
 | Diagnostic generation controls | [Control responses](runs/2026-11-12-rag/generator-controls.jsonl) | Gold-evidence and prior-knowledge conditions |
-| Faithfulness proxy and calibration controls | [Judge records](runs/2026-11-12-rag/judge.jsonl) | All 423 non-abstained answers and 32 controls; analysis pending |
+| Faithfulness proxy and calibration controls | [Judge records](runs/2026-11-12-rag/judge.jsonl) | All 423 non-abstained answers and 32 calibration controls |
 | Repeat passes | [First](runs/2026-11-12-rag/answers-repeat-1.jsonl), [second](runs/2026-11-12-rag/answers-repeat-2.jsonl) | Output stability on the same 16 questions |
 
 The manifest records full model digests, Ollama version, parameters, source
@@ -29,3 +29,8 @@ and the study's limits.
 HotpotQA-derived data is attributed to Yang, Qi, Zhang et al. (EMNLP 2018), under
 CC BY-SA 4.0. Checksums establish file identity; scientific interpretation still
 depends on the protocol and its controls.
+
+The [executable analysis](analysis.py), [results](RESULTS.md), and
+[per-question audit and figures](analysis/2026-11-12-rag/) are published together.
+The recorded Fiat example exposes a lexical false negative in exact matching;
+no semantic accuracy or human-review claim is inferred from that score.
