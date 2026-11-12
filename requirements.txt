@@ -1,0 +1,6 @@
+tokenizers==0.22.1
+pyarrow==21.0.0
+ujson==5.11.0
+numpy==2.3.4
+matplotlib==3.10.7
+
