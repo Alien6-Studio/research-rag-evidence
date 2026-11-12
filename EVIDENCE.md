@@ -34,3 +34,16 @@ The [executable analysis](analysis.py), [results](RESULTS.md), and
 [per-question audit and figures](analysis/2026-11-12-rag/) are published together.
 The recorded Fiat example exposes a lexical false negative in exact matching;
 no semantic accuracy or human-review claim is inferred from that score.
+
+## Exploratory follow-up
+
+`extensions/deeper_analysis.py` uses only preserved public observations. Its
+`--check` mode recomputes the sensitivity and paired analyses without writing
+new data or calling any model. The 2,608 cached vectors are exported as float64
+Parquet with exact inputs, the original embedding-model digest, an export-time
+record, and CC BY-SA 4.0 attribution. Export time is not collection time.
+
+The original three BM25 lexical-score losses and all four rejected reference
+controls are retained in the two review JSON files. Every review is explicitly
+assistant-assisted and provisional. Original labels, responses, and scores are
+unchanged. `checksums-deeper-analysis.sha256` identifies these new artifacts.

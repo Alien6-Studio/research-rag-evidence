@@ -41,6 +41,27 @@ controls, a rule-selected source example, and scoring limitations.
 before producing the tables and figures. Exact reference matching is not a
 complete semantic-correctness assessment.
 
+## Deeper diagnostics
+
+[The exploratory follow-up](DEEPER_ANALYSIS.md) follows gains and losses on the
+same questions, holds the evidence-counting unit constant across chunk sizes,
+checks repeated identical requests, and inspects ambiguous calibration labels.
+It does not turn the original 64 questions into a new independent sample.
+
+The exact cached embedding inputs and vectors are available in
+[`embeddings/`](embeddings/manifest.json). No running Ollama server is needed to
+reproduce all 1,152 retrieval diagnostics and the six paired contrasts:
+
+```bash
+.venv/bin/python extensions/deeper_analysis.py --check
+```
+
+The [review of all three lexical-score losses](analysis/2026-11-12-rag/exact-match-loss-review.json)
+keeps original scores and every relevant context. It distinguishes a wording
+change, contradictory source dates, and unsupported filming-location inference.
+These are provisional assistant reviews, not independent human adjudication or a
+replacement semantic-accuracy estimate.
+
 ## Reproduce
 
 ```bash
