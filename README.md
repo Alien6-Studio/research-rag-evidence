@@ -77,7 +77,7 @@ Original article publication: **2026-10-20**. Dedicated repository and new
 experimental work: **12 November 2026**. See [the chronology](CHRONOLOGY.md)
 for the distinction between historical publication and newly collected evidence.
 
-The maintained environment patches pyarrow and ujson after concrete dependency
+The maintained environment includes patched pyarrow and ujson after concrete dependency
 alerts were reported. The exact environment used for original measurements is
 preserved in [the environment record](environments/2026-11-12-original.json)
 and the protected protocol tag. This maintenance change does not rewrite those
@@ -85,3 +85,7 @@ measurements. The Linux portability check uses the patched versions.
 
 [Validity and limits](VALIDITY.md) separate the reproduced packing calculation
 from model-quality, hardware, timing, and sampling claims.
+
+Reviewed maintenance upgrades are checked against every archived primary record
+in CI. The original generation environment and its protected protocol tag remain
+unchanged. The public package manifests describe the current maintained tools.

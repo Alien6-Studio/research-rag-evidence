@@ -1,0 +1,29 @@
+{
+  "utc": "2026-11-12T18:54:31.922242+00:00",
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "--read-only",
+    "--cpus",
+    "2",
+    "--memory",
+    "4g",
+    "--mount",
+    "type=bind,source=/tmp/alien6-research-rag-evidence,target=/study,readonly",
+    "alien6-rag-dependency-check:2026-11-12",
+    "python",
+    "-m",
+    "unittest",
+    "discover",
+    "-p",
+    "test_*.py",
+    "-v"
+  ],
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "test_abstention_does_not_get_credit_for_a_filled_answer (test_run.StudyTests.test_abstention_does_not_get_credit_for_a_filled_answer) ... ok\ntest_annotations_do_not_change_selection (test_run.StudyTests.test_annotations_do_not_change_selection) ... ok\ntest_bad_source_annotation_stops_the_case (test_run.StudyTests.test_bad_source_annotation_stops_the_case) ... ok\ntest_bm25_prefers_the_matching_text (test_run.StudyTests.test_bm25_prefers_the_matching_text) ... ok\ntest_budget_applies_to_fully_rendered_context (test_run.StudyTests.test_budget_applies_to_fully_rendered_context) ... ok\ntest_invalid_citation_is_not_accepted_as_support (test_run.StudyTests.test_invalid_citation_is_not_accepted_as_support) ... ok\ntest_original_sentence_coordinates_survive_chunking (test_run.StudyTests.test_original_sentence_coordinates_survive_chunking) ... ok\ntest_recall_and_transmitted_evidence_are_separate (test_run.StudyTests.test_recall_and_transmitted_evidence_are_separate) ... ok\ntest_retrieval_denominator_includes_missing_relevant_chunks (test_run.StudyTests.test_retrieval_denominator_includes_missing_relevant_chunks) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.199s\n\nOK\n",
+  "archived_record_audit": "Audited 64 questions and 512 primary responses: a8f12b166a2fb8879a2e1a9c57ad3ccd28140bb55dd617bbba9fa03fb7af4f1c\n",
+  "requirements_sha256": "f8dab9fbf64eec18b45f64f488fb420ac5d9903cc9ae7f3cae6b5517bd525d1a",
+  "image_id": "sha256:7fecc21f2eafd86438bb6e18d7b27ea63d59aa8e395cae721cf78e67cb55c1ef"
+}
