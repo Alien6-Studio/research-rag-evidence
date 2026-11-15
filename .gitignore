@@ -14,3 +14,8 @@ __pycache__/
 /v2/runs/**/results.json
 /v2/verification.json
 /v2/reports/audit/historical-reanalysis/
+
+# V3 raw bytes are published losslessly with a separate SHA-256 manifest.
+/v3/runs/**/*.json
+/v3/runs/**/*.jsonl
+/v3/verification.json

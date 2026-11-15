@@ -1,0 +1,89 @@
+{
+  "scope": "Normal approximation for a paired binary difference; planning assumptions, not observed power.",
+  "scenarios": [
+    {
+      "family_size": 8,
+      "alpha_per_test": 0.00625,
+      "questions": 128,
+      "discordance_assumption": 0.1,
+      "approximate_80pct_mde": 0.09995195964772573
+    },
+    {
+      "family_size": 8,
+      "alpha_per_test": 0.00625,
+      "questions": 128,
+      "discordance_assumption": 0.3,
+      "approximate_80pct_mde": 0.17312187242593519
+    },
+    {
+      "family_size": 8,
+      "alpha_per_test": 0.00625,
+      "questions": 128,
+      "discordance_assumption": 0.5,
+      "approximate_80pct_mde": 0.22349937625663066
+    },
+    {
+      "family_size": 8,
+      "alpha_per_test": 0.00625,
+      "questions": 256,
+      "discordance_assumption": 0.1,
+      "approximate_80pct_mde": 0.07067670845979103
+    },
+    {
+      "family_size": 8,
+      "alpha_per_test": 0.00625,
+      "questions": 256,
+      "discordance_assumption": 0.3,
+      "approximate_80pct_mde": 0.12241564996409114
+    },
+    {
+      "family_size": 8,
+      "alpha_per_test": 0.00625,
+      "questions": 256,
+      "discordance_assumption": 0.5,
+      "approximate_80pct_mde": 0.1580379245420272
+    },
+    {
+      "family_size": 16,
+      "alpha_per_test": 0.003125,
+      "questions": 128,
+      "discordance_assumption": 0.1,
+      "approximate_80pct_mde": 0.10612345306793969
+    },
+    {
+      "family_size": 16,
+      "alpha_per_test": 0.003125,
+      "questions": 128,
+      "discordance_assumption": 0.3,
+      "approximate_80pct_mde": 0.1838112125883228
+    },
+    {
+      "family_size": 16,
+      "alpha_per_test": 0.003125,
+      "questions": 128,
+      "discordance_assumption": 0.5,
+      "approximate_80pct_mde": 0.23729925506692176
+    },
+    {
+      "family_size": 16,
+      "alpha_per_test": 0.003125,
+      "questions": 256,
+      "discordance_assumption": 0.1,
+      "approximate_80pct_mde": 0.07504061330727248
+    },
+    {
+      "family_size": 16,
+      "alpha_per_test": 0.003125,
+      "questions": 256,
+      "discordance_assumption": 0.3,
+      "approximate_80pct_mde": 0.12997415487932512
+    },
+    {
+      "family_size": 16,
+      "alpha_per_test": 0.003125,
+      "questions": 256,
+      "discordance_assumption": 0.5,
+      "approximate_80pct_mde": 0.16779591242833658
+    }
+  ]
+}

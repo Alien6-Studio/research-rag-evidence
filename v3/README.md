@@ -1,0 +1,86 @@
+# V3: selecting evidence under an equal documentary budget
+
+This is a separate prospective extension. V1/V2 observations, annotations,
+embeddings and scores remain unchanged. Read [the protocol](PROTOCOL.md),
+[method review](LITERATURE.md), [power assumptions](data/power-planning.json)
+and [frozen cohort](data/cohorts.json) before interpreting any outcomes.
+
+The planned controlled comparison contains 256 questions, four policies, two
+retrievers and two documentary budgets (4,096 contexts). Its fixed 128-question
+generation subset uses only 512 tokens (1,024 primary outputs). Eight separate
+pilot questions qualify the apparatus on technical criteria. A shared-corpus
+sensitivity is exploratory and has no generation arm.
+
+The policies are unchanged ranked chunks, a declared MMR chunk variant, original
+sentences in inherited ranking order, and a question-oriented MMR sentence
+variant. They are not reproductions of RECOMP, LongLLMLingua or SetR. Every
+context pays for titles, original sentence coordinates and separators.
+
+## Registration and collection
+
+Use Python 3.12 and the root `requirements-lock.txt`. Obtain the exact public
+inputs with `python prepare_data.py`. Only a separately authorized new campaign
+with the exact installed models can collect observations. Commands below never
+overwrite an earlier collection; failed observations must be retained.
+
+```sh
+python -m v3.design cohorts
+python -m unittest discover -p 'test_*.py' -v
+python -m v3.design register
+```
+
+Commit and publish the full registration before the first V3 context/model
+outcome. Record the real public PR creation timestamp, commit URL and registration
+SHA in `public-registration.json`. The collector requires this receipt and the
+committed frozen sources; a local file alone is not public preregistration.
+
+```sh
+python -m v3.benchmark prepare --split pilot
+python -m v3.benchmark generate --split pilot
+python -m v3.benchmark qualify
+python -m v3.benchmark prepare --split confirmatory
+python -m v3.benchmark generate --split confirmatory
+python -m v3.benchmark prepare --split confirmatory --environment pooled
+python -m v3.analysis --environment controlled
+python -m v3.analysis --environment pooled
+python -m v3.archive pack
+python -m v3.verify --require-collected
+```
+
+The pilot's three tokenizer probes and all 64 responses must qualify without an
+answer-quality threshold before confirmation starts. An interrupted request is
+not silently regenerated. Do not collect with a changed model, amended method or
+different dependency set under the original registration.
+
+## Offline reproduction
+
+After the complete observations are published, no inference service is needed:
+Use a full Git clone, including `protocol-rag-v3-2026-11-15`, so the verifier can
+inspect the public registration commit even after the development PR is squashed.
+An existing shallow clone must fetch that protocol tag before offline replay.
+
+```sh
+python prepare_data.py
+python -m v2.archive restore
+python -m v3.archive restore
+python -m unittest discover -p 'test_*.py' -v
+python -m v3.verify --require-collected
+```
+
+Before collection, `python -m v3.verify --protocol-only` checks the frozen design
+and cohort and explicitly requires the absence of experimental outcomes. That
+check never claims completed collection. CI chooses the appropriate mode from
+the presence of the lossless archive manifest.
+
+## Independent human review
+
+Use [the V2 human rubric](../v2/ANNOTATION.md) and `v3.annotation` with a private
+directory outside this public checkout. The V3 adapter preserves calibration,
+reference blinding, locked submissions and independent arbitration. Prepare all
+1,024 primary records, including invalid outputs; keep reviewer identities and
+mapping keys private. Blank packets are not annotations.
+
+`semantic-status.json` remains pending until actual independent human judgements
+and any required third-human arbitration exist. Neither EM/F1 nor a language
+model fills those labels. Local timing observations are not financial or
+production-capacity measurements.

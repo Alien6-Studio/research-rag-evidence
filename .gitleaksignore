@@ -1,0 +1,3 @@
+# Public SHA-256 of the pinned Qwen tokenizer input, also declared in sources.json.
+# Exact false-positive finding only; this is not an API credential.
+v3/data/cohorts.json:generic-api-key:25005

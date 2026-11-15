@@ -1,0 +1,51 @@
+{
+  "registered_utc": "2026-11-15T16:50:17.447698+00:00",
+  "git_base": "7a681f05e53be69237b820e7449c54ad83523d68",
+  "historical_commit": "7a681f05e53be69237b820e7449c54ad83523d68",
+  "files": {
+    "requirements-lock.txt": "ae6c888daf34b6a7f26569ac2dc56013f446e405959f000f6f9900414252a6c4",
+    "run.py": "9028549e2d3e165bdffa7c5704d565ed0ebeeca3e170184571198ed72a5f4bfa",
+    "sources.json": "5dcf2a109f9847c0dd654d662895875caa8bfda683b11f490fe99d073d4460a7",
+    "v3/LITERATURE.md": "f23b4427808d671e7bd79b053b37ca50f853a158290df46b98bb4727e8d48f7b",
+    "v3/PROTOCOL.md": "0a53d765baacc533ed56ce3b372a7cdfd5ee1e62d8421aab431ee5c09b7b8641",
+    "v3/__init__.py": "e0a6080316c70a1276bca4cd2bbac9abccf28352d0054cbccdfb48af4770cf71",
+    "v3/analysis.py": "b5979c90cda8bff469513c61e7a38d2dc533902af5dc815fd1ade0301d919bae",
+    "v3/annotation.py": "0a3c69f1f4e85e3a8fb1b87b8d1a5c0fb6916044d9ed1ce27403035ffefdd3bd",
+    "v3/archive.py": "f26e1e91aa70f2410661440f7fe980085100ae9b6744457f3b49aaddcc819985",
+    "v3/benchmark.py": "c7f19f5ca9677d0bc844c36d04f536552a022cfed7f2ea46bafae788fbae1a72",
+    "v3/core.py": "86957acadaa493003d2e206f06388c269311301a7caa9c73c8f6302b80c44592",
+    "v3/data/cohorts.json": "af6d3d4b21a0857e193c036cf7a1bb1616e9d523da0f826fe37d76a7383e72fe",
+    "v3/data/power-planning.json": "a2199ae2063eeba30938f8546b3d348bcfd91ba688ef79d703b68ab1525b47b4",
+    "v3/design.py": "139d5ad4c0ad29c8bbaeeca14b97c624cd0c7ad81dbff0c1213faa89aac5f315",
+    "v3/environment.json": "27cb3185a2c9a1101ff27e18ea90fec6630b2f25d2918ebfa523784f712bf0d1",
+    "v3/historical-preservation.json": "2760fc4d21cfba96466100a210b10093a995a255bab4104e69d73e0a372e60f3",
+    "v3/test_analysis.py": "7eb9880117015064b7c52b215f38284cf1205863a7a38a5551bf3ee5ca60896c",
+    "v3/test_annotation.py": "8beba814dda3b1e14fd4055e13e4b4f037dbc14cc8ae48ed588114c178b7165b",
+    "v3/test_archive.py": "8540d231f7458055ee71913b9c34b196a5583b4dc7b9d33a312ac105162bb829",
+    "v3/test_benchmark.py": "862a692de0b75efef0faae9a5788ba70756f930621b1c7f670aa4306a0a4a710",
+    "v3/test_core.py": "bba23d436eebd75b9a5ab8eacd21f6a009ee98dff553b6d588953b1d2a2ec1d1",
+    "v3/test_design.py": "08ee3b40ce8acde34976ca8c464216d3af9aa71e215dc3714302b6feb3cc0488",
+    "v3/test_verify.py": "4415effeba4748e68f974ac29b0b7733910cbd64a1e58be7e701944ad9c1bba9",
+    "v3/verify.py": "cce0ad7474cad68e69e84cefa7189dcc7564d4f3f904dea35ef975542addb9be"
+  },
+  "sources_sha256": "5dcf2a109f9847c0dd654d662895875caa8bfda683b11f490fe99d073d4460a7",
+  "original_generator_source_sha256": "9028549e2d3e165bdffa7c5704d565ed0ebeeca3e170184571198ed72a5f4bfa",
+  "models": {
+    "generator": [
+      "qwen3.6:latest",
+      "07d35212591fc27746f0a317c975a6d68754fb38e9053d82e25f06057af28522"
+    ],
+    "embedding": [
+      "nomic-embed-text:latest",
+      "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f"
+    ]
+  },
+  "generation_options": {
+    "temperature": 0,
+    "seed": 20261112,
+    "num_ctx": 8192,
+    "num_predict": 256,
+    "num_thread": 8
+  },
+  "source_provenance": "Publish this registration and every frozen file before V3 model or context outcomes. Local Git checks do not prove public availability; record that evidence separately. Dates are real."
+}

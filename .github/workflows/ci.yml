@@ -13,11 +13,12 @@ jobs:
   checks:
     name: Research checks
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          fetch-depth: 0
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: '3.12'
@@ -27,6 +28,9 @@ jobs:
         run: python prepare_data.py
       - name: Restore and verify complete V2 evidence
         run: python -m v2.archive restore
+      - name: Restore V3 observations when a complete archive is published
+        if: ${{ hashFiles('v3/archive-manifest.json') != '' }}
+        run: python -m v3.archive restore
       - name: Run research controls
         run: python -m unittest discover -p 'test_*.py' -v
       - name: Recompute all V2 contexts, responses and statistical families offline
@@ -39,6 +43,14 @@ jobs:
         run: python extensions/deeper_analysis.py --check
       - name: Verify article source ledger from the archived analyses
         run: python -m v2.article_evidence --check
+      - name: Verify the registered V3 instrument or complete collection offline
+        if: ${{ hashFiles('v3/registration.json') != '' }}
+        run: |
+          if test -f v3/archive-manifest.json; then
+            python -m v3.verify --require-collected > v3/verification.json
+          else
+            python -m v3.verify --protocol-only > v3/verification.json
+          fi
       - name: Verify published evidence identity
         run: python scripts/verify_evidence.py
       - name: Retain scientific replay evidence
@@ -49,5 +61,7 @@ jobs:
           path: |
             v2/verification.json
             v2/semantic-status.json
+            v3/verification.json
+            v3/semantic-status.json
           if-no-files-found: warn
           retention-days: 90
