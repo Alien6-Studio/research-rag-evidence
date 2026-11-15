@@ -23,10 +23,16 @@ from v3 import design
 from v3.benchmark import BUDGETS, METHODS, load_vectors
 from v3.core import (POLICIES, context_metrics, context_redundancy,
                      required_sentence_texts, select)
-from v3.design import BASE, COHORTS, REGISTRATION, ROOT, file_sha, lines, read
+from v3.design import (BASE, COHORTS, REGISTRATION, PUBLIC_REGISTRATION,
+                       PILOT_RUN_NAME, ROOT, file_sha, lines, read)
 
 PROBES = ("Hello world.", "Thirty seconds, then one retry after two seconds.",
           "[d00s002] Paris is in France.")
+EXECUTION_SCOPE = "One local quality experiment; timings do not qualify production performance or financial cost."
+PREPARATION_SCOPES = {
+    "controlled": "Controlled ten supplied paragraphs per question.",
+    "pooled": "Pooled results are separate exploratory question-derived retrieval, without generation.",
+}
 
 
 def equal(actual, expected, where="value"):
@@ -60,8 +66,16 @@ def timestamp(value):
 
 
 def after_publication(value, proof):
-    if timestamp(value) < timestamp(proof["github_pull_request_created_at"]):
+    if timestamp(value) < publication_time(proof):
         raise ValueError("An outcome predates public registration")
+
+
+def publication_time(proof):
+    if proof.get("publication_kind") == "release":
+        return timestamp(proof["published_at"])
+    if proof.get("publication_kind") not in (None, "pull_request"):
+        raise ValueError("Unknown publication evidence kind")
+    return timestamp(proof["github_pull_request_created_at"])
 
 
 def nonnegative(value, name):
@@ -78,26 +92,23 @@ def verify_cohorts():
         raise ValueError("Historical cohort counts differ")
     cohort = read(COHORTS)
     rows = pq.read_table(ROOT / "data/hotpot-validation.parquet").to_pylist()
-    expected = design.select_cohorts(rows, historical + v2["pilot"] + v2["confirmatory"])
-    expected.update({"selected_utc": cohort["selected_utc"],
-                     "dataset_sha256": file_sha(ROOT / "data/hotpot-validation.parquet"),
-                     "tokenizer_sha256": file_sha(ROOT / "data/qwen-tokenizer.json"),
-                     "historical_inputs": {name: file_sha(ROOT / name)
-                                           for name in (design.HISTORICAL_CASES, design.V2_COHORTS)},
-                     "historical_counts": {"v1": 64, "v2_pilot": 8, "v2_confirmatory": 256}})
+    original_cohort = read(design.LEGACY_COHORTS)
+    expected = design.amendment_cohort(rows, historical, v2, original_cohort, cohort["selected_utc"])
     equal(cohort, expected, "cohort")
     return cohort
 
 
-def verify_public_registration(registration, cohort):
-    proof = read(BASE / "public-registration.json")
-    if proof["registration_sha256"] != file_sha(REGISTRATION):
+def verify_public_registration(registration, cohort, registration_path=None, proof_path=None):
+    registration_path = Path(registration_path) if registration_path is not None else REGISTRATION
+    proof_path = Path(proof_path) if proof_path is not None else PUBLIC_REGISTRATION
+    proof = read(proof_path)
+    if proof["registration_sha256"] != file_sha(registration_path):
         raise ValueError("Public registration fingerprint differs")
     if not (timestamp(cohort["selected_utc"]) <= timestamp(registration["registered_utc"])
-            <= timestamp(proof["github_pull_request_created_at"])):
+            <= publication_time(proof)):
         raise ValueError("Cohort/registration/publication chronology differs")
     for name, expected in {**registration["files"],
-                           "v3/registration.json": file_sha(REGISTRATION)}.items():
+                           str(registration_path.relative_to(ROOT)): file_sha(registration_path)}.items():
         result = subprocess.run(["git", "show", proof["commit"] + ":" + name],
                                 cwd=ROOT, capture_output=True)
         if result.returncode or hashlib.sha256(result.stdout).hexdigest() != expected:
@@ -105,9 +116,9 @@ def verify_public_registration(registration, cohort):
     return proof
 
 
-def verify_metadata(value, proof):
+def verify_metadata(value, proof, scope=EXECUTION_SCOPE):
     after_publication(value["utc"], proof)
-    if value["registration_sha256"] != file_sha(REGISTRATION):
+    if value["registration_sha256"] != proof["registration_sha256"]:
         raise ValueError("Execution registration differs")
     equal(value["models"], json.loads(json.dumps(original.MODELS)), "execution.models")
     environment = read(BASE / "environment.json")
@@ -117,14 +128,15 @@ def verify_metadata(value, proof):
     if value["python"] != environment["python"]:
         raise ValueError("Collection Python differs from the registered environment")
     equal(value["public_registration"], proof, "execution.public_registration")
+    equal(value["scope"], scope, "metadata.scope")
 
 
 def verify_preparation(out, cases, split, environment, tokenizer, vectors, proof):
     preparation = read(out / "preparation.json")
-    verify_metadata(preparation, proof)
+    verify_metadata(preparation, proof, PREPARATION_SCOPES[environment])
     start = read(out / "preparation-start.json")
     verify_metadata(start, proof)
-    for key in start:
+    for key in start.keys() - {"scope"}:
         equal(preparation[key], start[key], "preparation-start." + key)
     job_list = read(out / "jobs.json")
     if preparation["jobs_sha256"] != file_sha(out / "jobs.json"):
@@ -198,7 +210,7 @@ def verify_preparation(out, cases, split, environment, tokenizer, vectors, proof
                 raise ValueError("Unexpected embedding packet path")
             packet = json.loads(gzip.decompress(path.read_bytes()))
             after_publication(packet["utc"], proof)
-            if packet["registration_sha256"] != file_sha(REGISTRATION) or packet["purpose"] != summary["purpose"]:
+            if packet["registration_sha256"] != proof["registration_sha256"] or packet["purpose"] != summary["purpose"]:
                 raise ValueError("Embedding packet provenance differs")
             equal(packet["request"]["model"], original.MODELS["embedding"][0], "embedding model")
             if packet["request"].get("truncate") is not False or "error" in packet:
@@ -336,7 +348,7 @@ def verify_pilot_certificate(out, answers, proof):
     after_publication(certificate["utc"], proof)
     for name, value in {"passed": True, "questions": 8, "contexts": 128,
                         "responses": 64, "errors": 0,
-                        "registration_sha256": file_sha(REGISTRATION),
+                        "registration_sha256": proof["registration_sha256"],
                         "jobs.json_sha256": file_sha(out / "jobs.json"),
                         "answers.jsonl_sha256": file_sha(out / "answers.jsonl")}.items():
         equal(certificate[name], value, "pilot certificate." + name)
@@ -360,7 +372,7 @@ def verify_pilot_inputs(proof=None):
     if proof is not None:
         equal(proof, published, "pilot publication receipt")
     proof = published
-    out = BASE / "runs/pilot-controlled"
+    out = BASE / "runs" / PILOT_RUN_NAME
     tokenizer = Tokenizer.from_file(str(ROOT / "data/qwen-tokenizer.json"))
     vectors = load_vectors()
     jobs, packets = verify_preparation(out, cohort["pilot"], "pilot", "controlled",
@@ -383,12 +395,89 @@ def verify_pilot_inputs(proof=None):
             "model_calls": 0}
 
 
+def prior_allowed_files():
+    """Only the hash-bound original pilot may predate amendment publication."""
+    path = BASE / "amendments/01/prior-evidence.json"
+    if not path.exists():
+        return {}
+    prior = read(path)
+    allowed = dict(prior["files"])
+    allowed.update(prior["inherited_embedding_packets"])
+    archive = read(ROOT / prior["legacy_archive"])
+    for row in archive["files"]:
+        allowed[row["path"]] = row["sha256"]
+    for name, expected in allowed.items():
+        if not (ROOT / name).is_file() or file_sha(ROOT / name) != expected:
+            raise ValueError("Retained original-pilot evidence differs: " + name)
+    return allowed
+
+
+def verify_embedding_epochs(proof):
+    prior_path = BASE / "amendments/01/prior-evidence.json"
+    prior = read(prior_path) if prior_path.exists() else {"inherited_embedding_packets": {}}
+    original_proof = read(design.LEGACY_PUBLIC_REGISTRATION) if prior_path.exists() else None
+    inherited = prior["inherited_embedding_packets"]
+    for path in sorted((BASE / "runs/embedding-traces").glob("batch-*.json.gz")):
+        name = str(path.relative_to(ROOT))
+        packet = json.loads(gzip.decompress(path.read_bytes()))
+        if name in inherited:
+            if file_sha(path) != inherited[name]:
+                raise ValueError("Inherited embedding packet changed")
+            if packet["registration_sha256"] != original_proof["registration_sha256"]:
+                raise ValueError("Inherited embedding registration differs")
+            after_publication(packet["utc"], original_proof)
+        else:
+            if packet["registration_sha256"] != proof["registration_sha256"]:
+                raise ValueError("New embedding packet lacks amendment identity")
+            after_publication(packet["utc"], proof)
+    return set(inherited)
+
+
+def diagnostic_original_pilot():
+    """Replay a corrected check without replacing the failed qualification."""
+    prior = design.check_prior_evidence()
+    original_cohort = read(design.LEGACY_COHORTS)
+    registration = read(design.LEGACY_REGISTRATION)
+    proof = verify_public_registration(registration, original_cohort,
+                                       design.LEGACY_REGISTRATION,
+                                       design.LEGACY_PUBLIC_REGISTRATION)
+    out = ROOT / prior["original_failed_pilot"]
+    tokenizer = Tokenizer.from_file(str(ROOT / "data/qwen-tokenizer.json"))
+    vectors = load_vectors()
+    jobs, packets = verify_preparation(out, original_cohort["pilot"], "pilot", "controlled",
+                                       tokenizer, vectors, proof)
+    cases = {c["id"]: c for c in original_cohort["pilot"]}
+    expected = {key for key, job in jobs.items() if job["budget"] == 512}
+    answers = verify_answers(lines(out / "answers.jsonl"), lines(out / "intents.jsonl"),
+                             jobs, cases, expected, proof, complete=True)
+    probes = verify_probes(out, tokenizer, proof)
+    for execution in out.glob("execution-*.json"):
+        verify_metadata(read(execution), proof)
+    recorded = read(out / "qualification.json")
+    if recorded["passed"] is not False:
+        raise ValueError("The original failed qualification was relabelled")
+    for name, expected in prior["qualification_preserved"].items():
+        equal(recorded[name], expected, "retained failed qualification." + name)
+    return {"role": "diagnostic replay only; original pilot remains excluded",
+            "included_for_confirmation": False, "recorded_passed": False,
+            "corrected_input_replay_passed": not answers["errors"],
+            "contexts": len(jobs), "responses": answers["observed"],
+            "errors": answers["errors"], "tokenizer_probes": probes["probes"],
+            "embedding_packets": len(packets), "model_calls": 0}
+
+
 def verify(protocol_only=False, require_collected=False):
+    prior_path = BASE / "amendments/01/prior-evidence.json"
+    if prior_path.exists():
+        from v3.archive import restore
+        restore(root=ROOT, manifest_path=read(prior_path)["legacy_archive"])
     registration = design.registered()
     cohort = verify_cohorts()
     if timestamp(cohort["selected_utc"]) > timestamp(registration["registered_utc"]):
         raise ValueError("Cohort was selected after registration")
-    outcome_files = [p for p in (BASE / "runs").rglob("*") if p.is_file()]
+    allowed = prior_allowed_files()
+    outcome_files = [p for p in (BASE / "runs").rglob("*") if p.is_file()
+                     and str(p.relative_to(ROOT)) not in allowed]
     manifest_path = BASE / "archive-manifest.json"
     archive = None
     if manifest_path.exists():
@@ -396,8 +485,9 @@ def verify(protocol_only=False, require_collected=False):
         archive = restore(root=ROOT)
     if protocol_only:
         if outcome_files or archive is not None:
-            raise ValueError("Protocol-only verification requires absence of V3 outcomes")
-        return {"status": "registered prospective protocol; no V3 outcomes collected",
+            raise ValueError("Protocol-only verification requires absence of amendment outcomes")
+        return {"status": "registered prospective amendment; no amendment outcomes collected",
+                "original_pilot": "retained excluded under its original failed qualification",
                 "pilot_questions": 8, "deterministic_questions": 256,
                 "generation_questions": 128, "model_calls": 0}
     if not outcome_files:
@@ -405,13 +495,14 @@ def verify(protocol_only=False, require_collected=False):
             raise ValueError("V3 observations have not been collected")
         return {"status": "registered protocol; collection pending", "model_calls": 0}
     proof = verify_public_registration(registration, cohort)
+    inherited_packets = verify_embedding_epochs(proof)
     tokenizer = Tokenizer.from_file(str(ROOT / "data/qwen-tokenizer.json"))
     vectors = load_vectors()
     reports = {}; packet_paths = []; missing = []
     pilot_certificate = None
     for split, environment in (("pilot", "controlled"), ("confirmatory", "controlled"),
                                ("confirmatory", "pooled")):
-        out = BASE / "runs" / f"{split}-{environment}"
+        out = BASE / "runs" / (PILOT_RUN_NAME if split == "pilot" else f"{split}-{environment}")
         if not (out / "preparation.json").exists():
             missing.append(f"{split}-{environment}")
             continue
@@ -445,7 +536,7 @@ def verify(protocol_only=False, require_collected=False):
     packets = {str(p.relative_to(ROOT)) for p in (BASE / "runs/embedding-traces").glob("batch-*.json.gz")}
     if len(packet_paths) != len(set(packet_paths)):
         raise ValueError("Embedding preparation cost was assigned more than once")
-    orphan_packets = sorted(packets - set(packet_paths))
+    orphan_packets = sorted(packets - set(packet_paths) - inherited_packets)
     if require_collected:
         if missing or orphan_packets or archive is None:
             raise ValueError("Incomplete final collection, archive, or preparation accounting")
@@ -459,6 +550,8 @@ def verify(protocol_only=False, require_collected=False):
     return {"status": "complete archived collection verified" if not missing and require_collected
                       else "available observations verified; incomplete collection is not a completed experiment",
             "collections": reports, "missing_collections": missing,
+            "retained_original_pilot": diagnostic_original_pilot(),
+            "inherited_embedding_packets": len(inherited_packets),
             "unassigned_embedding_packets": orphan_packets, "archive": archive,
             "semantic_validation": "pending independent human annotation",
             "model_calls": 0}

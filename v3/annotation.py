@@ -8,7 +8,7 @@ from v2 import annotation as workflow
 from v3.analysis import (contrasts, evidence_sha, exact_mcnemar, holm,
                          paired_interval, read_json, read_lines,
                          validate_answers, validate_jobs)
-from v3.design import BASE, COHORTS, ROOT
+from v3.design import BASE, COHORTS, REGISTRATION, ROOT
 
 FIELDS = workflow.FIELDS
 validate_label = workflow.validate_label
@@ -22,7 +22,7 @@ adjudication_packet = workflow.adjudication_packet
 def source_manifest():
     directory = BASE / 'runs/confirmatory-controlled'
     return {'cohorts_sha256': evidence_sha(COHORTS),
-            'registration_sha256': evidence_sha(BASE / 'registration.json'),
+            'registration_sha256': evidence_sha(REGISTRATION),
             'jobs_sha256': evidence_sha(directory / 'jobs.json'),
             'answers_sha256': evidence_sha(directory / 'answers.jsonl'),
             'protocol_sha256': evidence_sha(BASE / 'PROTOCOL.md'),

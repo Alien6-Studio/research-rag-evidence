@@ -95,6 +95,19 @@ class CohortTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Insufficient eligible"):
             design.select_cohorts([case(0)], [])
 
+    def test_amendment_replaces_entire_pilot_and_preserves_confirmation_exactly(self):
+        original = design.select_cohorts(self.rows, [])
+        amended = design.select_amendment_cohorts(self.rows, [], original)
+        self.assertEqual(amended["confirmatory"], original["confirmatory"])
+        self.assertEqual(amended["generation_ids"], original["generation_ids"])
+        self.assertEqual(amended["seeds"]["pilot"], 20261216)
+        earlier = original["pilot"] + original["confirmatory"]
+        self.assertFalse({c["id"] for c in earlier} & {c["id"] for c in amended["pilot"]})
+        old_titles = {t for c in earlier for t in c["supporting_facts"]["title"]}
+        self.assertFalse(old_titles & {t for c in amended["pilot"] for t in c["supporting_facts"]["title"]})
+        self.assertEqual([sum(c["type"] == kind for c in amended["pilot"])
+                          for kind in ("bridge", "comparison")], [4, 4])
+
 
 class RecordTests(unittest.TestCase):
     def test_creation_is_exclusive_and_jsonl_append_retains_prior_records(self):
@@ -137,9 +150,17 @@ class RegistrationTests(unittest.TestCase):
         (self.root / design.PRESERVATION).write_text(json.dumps({
             "baseline_commit": "historical", "files": {
                 "v2/observations.json": design.file_sha(history)}}))
+        (self.root / design.PRIOR_EVIDENCE).write_text(json.dumps({
+            "original_registration_commit": "original-v3-commit",
+            "original_failed_pilot": "v3/runs/pilot-controlled",
+            "files": {"v3/registration.json": design.file_sha(self.base / "registration.json")},
+            "inherited_embedding_packets": {}}))
         self.context = patch.multiple(design, ROOT=self.root, BASE=self.base,
-                                      COHORTS=self.base / "data/cohorts.json",
-                                      REGISTRATION=self.base / "registration.json")
+                                      COHORTS=self.base / "data/cohorts-amendment-01.json",
+                                      REGISTRATION=self.base / "registration-amendment-01.json",
+                                      LEGACY_COHORTS=self.base / "data/cohorts.json",
+                                      LEGACY_REGISTRATION=self.base / "registration.json",
+                                      LEGACY_PUBLIC_REGISTRATION=self.base / "public-registration.json")
         self.context.start()
 
     def tearDown(self):
@@ -194,11 +215,12 @@ class RegistrationTests(unittest.TestCase):
 
     def test_dynamic_semantic_status_and_publication_receipt_are_not_frozen(self):
         self.register()
-        for name in ("semantic-status.json", "public-registration.json"):
+        for name in ("semantic-status.json", "public-registration-amendment-01.json"):
             (self.base / name).write_text('{"status": "updated after registration"}\n')
         with self.committed():
             self.assertNotIn("v3/semantic-status.json", design.registered()["files"])
-            self.assertNotIn("v3/public-registration.json", design.registered()["files"])
+            self.assertNotIn("v3/public-registration-amendment-01.json", design.registered()["files"])
+            self.assertIn("v3/public-registration.json", design.registered()["files"])
 
 
 if __name__ == "__main__":

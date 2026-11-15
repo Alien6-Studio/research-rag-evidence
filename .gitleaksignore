@@ -1,3 +1,5 @@
 # Public SHA-256 of the pinned Qwen tokenizer input, also declared in sources.json.
 # Exact false-positive finding only; this is not an API credential.
 v3/data/cohorts.json:generic-api-key:25005
+# The same pinned public input digest in the prospectively amended cohort.
+v3/data/cohorts-amendment-01.json:generic-api-key:25078

@@ -1,6 +1,7 @@
 """Synthetic controls for offline evidence replay; no benchmark observations."""
 import base64
 import copy
+import gzip
 import json
 from pathlib import Path
 import random
@@ -158,7 +159,9 @@ class PreparationReplayTests(unittest.TestCase):
         metadata = {"utc": RECORD_UTC, "registration_sha256": verify.file_sha(self.registration),
                     "models": json.loads(json.dumps(original.MODELS)),
                     "dependencies": {"numpy": "synthetic fixture"},
-                    "python": "synthetic fixture", "public_registration": PROOF}
+                    "python": "synthetic fixture", "scope": verify.EXECUTION_SCOPE}
+        self.proof = {**PROOF, "registration_sha256": verify.file_sha(self.registration)}
+        metadata["public_registration"] = self.proof
         (self.base / "environment.json").write_text(json.dumps({
             "dependencies": metadata["dependencies"], "python": metadata["python"]}))
         self.jobs = []; retrieval = []; sentence_inputs = set()
@@ -186,6 +189,7 @@ class PreparationReplayTests(unittest.TestCase):
         counts = [len({"search_query: " + self.case["question"]}
                       | {"search_document: " + c["text"] for c in indexed}), len(sentence_inputs)]
         self.preparation = {**metadata, "split": "pilot", "environment": "controlled",
+                            "scope": verify.PREPARATION_SCOPES["controlled"],
                             "questions": 1, "jobs": 16, "corpus_paragraphs": len(corpus),
                             "corpus_chunks": None, "corpus_sha256": digest([corpus[k] for k in sorted(corpus)]),
                             "retrieval": retrieval, "shared_ranking_wall_seconds": .01,
@@ -208,7 +212,7 @@ class PreparationReplayTests(unittest.TestCase):
 
     def replay(self):
         return verify.verify_preparation(self.out, [self.case], "pilot", "controlled",
-                                         self.tokenizer, self.vectors, PROOF)
+                                         self.tokenizer, self.vectors, self.proof)
 
     def test_every_policy_replays_from_same_saved_candidates(self):
         jobs, packets = self.replay()
@@ -235,15 +239,31 @@ class PreparationReplayTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "recorded cost"):
             self.replay()
 
+    def test_stage_scopes_are_distinct_but_each_is_validated(self):
+        self.assertNotEqual(self.preparation["scope"], verify.EXECUTION_SCOPE)
+        self.replay()
+        self.preparation["scope"] = verify.EXECUTION_SCOPE
+        self.save()
+        with self.assertRaisesRegex(ValueError, "metadata.scope"):
+            self.replay()
+        self.preparation["scope"] = verify.PREPARATION_SCOPES["controlled"]
+        self.save()
+        path = self.out / "preparation-start.json"
+        start = json.loads(path.read_text())
+        start["scope"] = verify.PREPARATION_SCOPES["controlled"]
+        path.write_text(json.dumps(start))
+        with self.assertRaisesRegex(ValueError, "metadata.scope"):
+            self.replay()
+
 
 class ProtocolOnlyTests(unittest.TestCase):
     def test_absence_of_outcomes_is_explicit_and_enforced(self):
         with tempfile.TemporaryDirectory() as directory:
             base = Path(directory)
-            with patch.object(verify, "BASE", base), patch.object(
+            with patch.multiple(verify, BASE=base, ROOT=base), patch.object(
                     verify.design, "registered", return_value={"registered_utc": INTENT_UTC}), patch.object(
                     verify, "verify_cohorts", return_value={"selected_utc": PROOF["github_pull_request_created_at"]}):
-                self.assertIn("no V3 outcomes", verify.verify(protocol_only=True)["status"])
+                self.assertIn("no amendment outcomes", verify.verify(protocol_only=True)["status"])
                 (base / "runs").mkdir(); (base / "runs/response.json").write_text("{}")
                 with self.assertRaisesRegex(ValueError, "absence"):
                     verify.verify(protocol_only=True)
@@ -251,6 +271,55 @@ class ProtocolOnlyTests(unittest.TestCase):
     def test_numeric_replay_checks_reject_nonfinite_values(self):
         with self.assertRaisesRegex(ValueError, "number differs"):
             verify.equal({"gain": float("nan")}, {"gain": .2})
+
+    def test_only_hash_bound_prior_outcomes_and_gzip_aliases_are_allowed(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory); base = root / "v3"; old = base / "runs/pilot-controlled"
+            old.mkdir(parents=True)
+            raw = old / "synthetic.json"; raw.write_text('{"synthetic":"prior"}\n')
+            stored = raw.with_name(raw.name + ".gz")
+            stored.write_bytes(gzip.compress(raw.read_bytes(), mtime=0))
+            legacy = base / "amendments/01/retained-pilot-archive.json"
+            legacy.parent.mkdir(parents=True)
+            legacy.write_text(json.dumps({"schema": "alien6-rag-v3-lossless-archive-v1", "files": [{
+                "source_path": str(raw.relative_to(root)), "path": str(stored.relative_to(root)),
+                "encoding": "gzip", "bytes": stored.stat().st_size, "sha256": verify.file_sha(stored),
+                "decoded_bytes": raw.stat().st_size, "decoded_sha256": verify.file_sha(raw)}]}))
+            (legacy.parent / "prior-evidence.json").write_text(json.dumps({
+                "files": {str(raw.relative_to(root)): verify.file_sha(raw),
+                          str(legacy.relative_to(root)): verify.file_sha(legacy)},
+                "inherited_embedding_packets": {}, "legacy_archive": str(legacy.relative_to(root))}))
+            with patch.multiple(verify, ROOT=root, BASE=base), patch.object(
+                    verify.design, "registered", return_value={"registered_utc": INTENT_UTC}), patch.object(
+                    verify, "verify_cohorts", return_value={"selected_utc": PROOF["github_pull_request_created_at"]}):
+                self.assertIn("no amendment outcomes", verify.verify(protocol_only=True)["status"])
+                new = base / "runs" / verify.PILOT_RUN_NAME; new.mkdir()
+                (new / "synthetic.json").write_text("{}")
+                with self.assertRaisesRegex(ValueError, "absence"):
+                    verify.verify(protocol_only=True)
+
+    def test_new_packets_cannot_borrow_the_old_publication_epoch(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory); base = root / "v3"
+            packets = base / "runs/embedding-traces"; packets.mkdir(parents=True)
+            prior = base / "amendments/01/prior-evidence.json"; prior.parent.mkdir(parents=True)
+            old = packets / "batch-00000.json.gz"
+            old.write_bytes(gzip.compress(json.dumps({"utc": RECORD_UTC,
+                                                     "registration_sha256": "old-registration"}).encode(), mtime=0))
+            prior.write_text(json.dumps({"inherited_embedding_packets": {
+                str(old.relative_to(root)): verify.file_sha(old)}}))
+            old_proof = base / "public-registration.json"
+            old_proof.write_text(json.dumps({**PROOF, "registration_sha256": "old-registration"}))
+            proof = {"publication_kind": "release", "published_at": "2026-11-15T13:00:00Z",
+                     "registration_sha256": "amendment-registration"}
+            with patch.multiple(verify, ROOT=root, BASE=base), patch.object(
+                    verify.design, "LEGACY_PUBLIC_REGISTRATION", old_proof):
+                self.assertEqual(len(verify.verify_embedding_epochs(proof)), 1)
+                new = packets / "batch-00001.json.gz"
+                new.write_bytes(gzip.compress(json.dumps({"utc": RECORD_UTC,
+                                                          "registration_sha256": "amendment-registration"}).encode(), mtime=0))
+                with self.assertRaisesRegex(ValueError, "predates public"):
+                    verify.verify_embedding_epochs(proof)
 
 
 class TokenizerProbeTests(unittest.TestCase):
@@ -303,6 +372,12 @@ class TokenizerProbeTests(unittest.TestCase):
 
 
 class PublicRegistrationTests(unittest.TestCase):
+    def test_release_timestamp_takes_precedence_over_the_old_pull_request(self):
+        proof = {**PROOF, "publication_kind": "release", "published_at": "2026-11-15T13:00:00Z"}
+        with self.assertRaisesRegex(ValueError, "predates public"):
+            verify.after_publication(RECORD_UTC, proof)
+        verify.after_publication("2026-11-15T13:00:01+00:00", proof)
+
     def test_all_frozen_sources_must_exist_in_the_public_commit(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory); base = root / "v3"; base.mkdir()
@@ -312,12 +387,14 @@ class PublicRegistrationTests(unittest.TestCase):
                             "files": {"v3/instrument.py": verify.file_sha(instrument)}}
             proof = {**PROOF, "registration_sha256": verify.file_sha(registration_path),
                      "commit": "published-commit"}
-            (base / "public-registration.json").write_text(json.dumps(proof))
+            receipt = base / "public-registration-amendment-01.json"
+            receipt.write_text(json.dumps(proof))
             def captured(command, **kwargs):
                 name = command[-1].split(":", 1)[1]
                 return SimpleNamespace(returncode=0, stdout=(root / name).read_bytes())
             cohort = {"selected_utc": "2026-11-15T10:00:00+00:00"}
-            with patch.multiple(verify, ROOT=root, BASE=base, REGISTRATION=registration_path), patch.object(
+            with patch.multiple(verify, ROOT=root, BASE=base, REGISTRATION=registration_path,
+                                PUBLIC_REGISTRATION=receipt), patch.object(
                     verify.subprocess, "run", side_effect=captured):
                 self.assertEqual(verify.verify_public_registration(registration, cohort), proof)
                 with patch.object(verify.subprocess, "run", return_value=SimpleNamespace(
@@ -345,15 +422,16 @@ class PilotGateTests(unittest.TestCase):
                                                if p.suffix in (".json", ".jsonl")}}
             (out / "qualification.json").write_text(json.dumps(certificate))
             with patch.object(verify, "REGISTRATION", registration):
+                receipt = {**PROOF, "registration_sha256": verify.file_sha(registration)}
                 self.assertTrue(verify.verify_pilot_certificate(
-                    out, {"observed": 64, "errors": 0}, PROOF)["passed"])
+                    out, {"observed": 64, "errors": 0}, receipt)["passed"])
                 (out / "execution-1.json").write_text('{"metadata":"altered"}\n')
                 with self.assertRaisesRegex(ValueError, "certificate evidence"):
-                    verify.verify_pilot_certificate(out, {"observed": 64, "errors": 0}, PROOF)
+                    verify.verify_pilot_certificate(out, {"observed": 64, "errors": 0}, receipt)
 
     def test_input_gate_runs_before_certificate_and_archive_exist(self):
         with tempfile.TemporaryDirectory() as directory:
-            base = Path(directory); out = base / "runs/pilot-controlled"
+            base = Path(directory); out = base / "runs" / verify.PILOT_RUN_NAME
             out.mkdir(parents=True); (out / "execution-1.json").write_text("{}")
             cases = [{"id": f"synthetic-{i}"} for i in range(8)]
             jobs = {f"{c['id']}:{method}:{policy}:{budget}": {"budget": budget}

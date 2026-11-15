@@ -47,6 +47,13 @@ class AnnotationAdapterTests(unittest.TestCase):
                 self.assertIsNone(status['semantic_results'])
                 self.assertFalse((directory / 'final.json').exists())
 
+    def test_source_binding_uses_the_active_amended_registration(self):
+        amended = annotation.BASE / 'registration-amendment-01.json'
+        with patch.object(annotation, 'REGISTRATION', amended), \
+                patch.object(annotation, 'evidence_sha', side_effect=lambda path: str(path)), \
+                patch.object(annotation.workflow, 'sha', return_value='rubric'):
+            self.assertEqual(annotation.source_manifest()['registration_sha256'], str(amended))
+
     def test_changed_source_binding_is_detected_before_human_finalization(self):
         with tempfile.TemporaryDirectory() as temporary:
             directory = Path(temporary) / 'review'

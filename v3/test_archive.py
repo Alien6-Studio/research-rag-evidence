@@ -33,5 +33,18 @@ class ArchiveControls(unittest.TestCase):
             path.parent.mkdir(parents=True); path.write_text('[]'); pack(root)
             with self.assertRaises(FileExistsError): pack(root)
 
+    def test_retained_epoch_restores_and_reuses_compressed_bytes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory); path = root / 'v3/runs/pilot-controlled/jobs.json'
+            path.parent.mkdir(parents=True); path.write_text('["synthetic"]'); pack(root)
+            encoded = path.with_name('jobs.json.gz').read_bytes()
+            legacy = root / 'v3/amendments/01/retained-pilot-archive.json'
+            legacy.parent.mkdir(parents=True)
+            (root / 'v3/archive-manifest.json').rename(legacy)
+            path.unlink()
+            self.assertEqual(restore(root, manifest_path=legacy.relative_to(root))['restored_files'], 1)
+            pack(root)
+            self.assertEqual(path.with_name('jobs.json.gz').read_bytes(), encoded)
+
 
 if __name__ == '__main__': unittest.main()

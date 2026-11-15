@@ -28,6 +28,9 @@ jobs:
         run: python prepare_data.py
       - name: Restore and verify complete V2 evidence
         run: python -m v2.archive restore
+      - name: Restore the excluded original V3 pilot for provenance checks
+        if: ${{ hashFiles('v3/amendments/01/retained-pilot-archive.json') != '' }}
+        run: python -m v3.archive restore --manifest v3/amendments/01/retained-pilot-archive.json
       - name: Restore V3 observations when a complete archive is published
         if: ${{ hashFiles('v3/archive-manifest.json') != '' }}
         run: python -m v3.archive restore
@@ -44,7 +47,7 @@ jobs:
       - name: Verify article source ledger from the archived analyses
         run: python -m v2.article_evidence --check
       - name: Verify the registered V3 instrument or complete collection offline
-        if: ${{ hashFiles('v3/registration.json') != '' }}
+        if: ${{ hashFiles('v3/registration-amendment-01.json') != '' }}
         run: |
           if test -f v3/archive-manifest.json; then
             python -m v3.verify --require-collected > v3/verification.json

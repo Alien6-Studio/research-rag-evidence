@@ -26,7 +26,8 @@ from v2.verify import checked_answer
 from v3.core import (POLICIES, context_metrics, context_redundancy,
                      required_sentence_texts, select)
 from v3.design import (BASE, COHORTS, REGISTRATION, ROOT, append, check_inputs,
-                       file_sha, lines, read, registered, utc, write_new)
+                       file_sha, lines, read, registered, utc, write_new,
+                       PUBLIC_REGISTRATION, PILOT_RUN_NAME)
 
 METHODS = ('bm25', 'dense')
 BUDGETS = (512, 1536)
@@ -64,12 +65,12 @@ def request(endpoint, payload=None):
 
 
 def public_registration():
-    proof = read(BASE / 'public-registration.json')
+    proof = read(PUBLIC_REGISTRATION)
     if proof['registration_sha256'] != file_sha(REGISTRATION):
         raise ValueError('Public registration identity differs')
     captured = subprocess.check_output(
-        ['git', 'show', proof['commit'] + ':v3/registration.json'], cwd=ROOT)
-    if captured != REGISTRATION.read_bytes() or not proof.get('github_pull_request_created_at'):
+        ['git', 'show', proof['commit'] + ':' + REGISTRATION.relative_to(ROOT).as_posix()], cwd=ROOT)
+    if captured != REGISTRATION.read_bytes() or not (proof.get('published_at') or proof.get('github_pull_request_created_at')):
         raise ValueError('Require the published registration and actual GitHub timestamp')
     return proof
 
@@ -158,6 +159,9 @@ def embeddings_for(texts, purpose, vectors=None):
 
 
 def run_path(split, environment='controlled'):
+    if split == 'pilot':
+        if environment != 'controlled': raise ValueError('Pilot is controlled only')
+        return BASE / 'runs' / PILOT_RUN_NAME
     return BASE / 'runs' / f'{split}-{environment}'
 
 

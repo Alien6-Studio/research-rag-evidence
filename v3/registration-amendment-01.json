@@ -1,0 +1,61 @@
+{
+  "registered_utc": "2026-11-15T17:10:51.791241+00:00",
+  "git_base": "90fecf74f2cbfeaf52618688681c366430604042",
+  "historical_commit": "7a681f05e53be69237b820e7449c54ad83523d68",
+  "amendment": "01",
+  "original_registration_commit": "90fecf74f2cbfeaf52618688681c366430604042",
+  "original_registration_sha256": "d044efd69556cd9c40c10d04e62e358660f36d4f1172c554404fd25bc1562d62",
+  "excluded_original_pilot": "v3/runs/pilot-controlled",
+  "files": {
+    "requirements-lock.txt": "ae6c888daf34b6a7f26569ac2dc56013f446e405959f000f6f9900414252a6c4",
+    "run.py": "9028549e2d3e165bdffa7c5704d565ed0ebeeca3e170184571198ed72a5f4bfa",
+    "sources.json": "5dcf2a109f9847c0dd654d662895875caa8bfda683b11f490fe99d073d4460a7",
+    "v3/AMENDMENT-01.md": "1f7609a2af6df09d1b0ce70ca5ba7de011d5fe1a2d9802ab65fa4a37bf944d39",
+    "v3/LITERATURE.md": "f23b4427808d671e7bd79b053b37ca50f853a158290df46b98bb4727e8d48f7b",
+    "v3/PROTOCOL.md": "0a53d765baacc533ed56ce3b372a7cdfd5ee1e62d8421aab431ee5c09b7b8641",
+    "v3/__init__.py": "e0a6080316c70a1276bca4cd2bbac9abccf28352d0054cbccdfb48af4770cf71",
+    "v3/amendments/01/prior-evidence.json": "2248e8b24613b8029a371809783b88f5282a8a2755334a89a7d7153c05040be3",
+    "v3/analysis.py": "b5979c90cda8bff469513c61e7a38d2dc533902af5dc815fd1ade0301d919bae",
+    "v3/annotation.py": "8278a200783fd02021b92bb18f3a745ad8df41b75f9626c74dc2a2465ea9fda9",
+    "v3/archive.py": "c122a6688fd6189b39792c4798e4afa4d299a9b69785afa223f881e869dc6365",
+    "v3/benchmark.py": "b0aa3ebc2bba7483ef2ce29eba5c378a194e2fb3271950c84114f5ae8ba00754",
+    "v3/core.py": "86957acadaa493003d2e206f06388c269311301a7caa9c73c8f6302b80c44592",
+    "v3/data/cohorts-amendment-01.json": "2adb7f010e3bee6df7786ee585ef37f13c14f0fcc9ebf0823761e7e08a2e1a9d",
+    "v3/data/cohorts.json": "af6d3d4b21a0857e193c036cf7a1bb1616e9d523da0f826fe37d76a7383e72fe",
+    "v3/data/power-planning.json": "a2199ae2063eeba30938f8546b3d348bcfd91ba688ef79d703b68ab1525b47b4",
+    "v3/design.py": "7710f742096b4d22c13fd59670f56dd9b1d7a8e039c7dd2ebde1129ca32e1f4e",
+    "v3/environment.json": "27cb3185a2c9a1101ff27e18ea90fec6630b2f25d2918ebfa523784f712bf0d1",
+    "v3/historical-preservation.json": "2760fc4d21cfba96466100a210b10093a995a255bab4104e69d73e0a372e60f3",
+    "v3/public-registration.json": "d610f697f57441b1e9bde45fc599f1431120d5c8ab23412a90b2471be1d8a15d",
+    "v3/registration.json": "d044efd69556cd9c40c10d04e62e358660f36d4f1172c554404fd25bc1562d62",
+    "v3/test_analysis.py": "6613f58233e9bd921e43bd33e064c8eddfca6f57297e473f98baa6f0fc319e6e",
+    "v3/test_annotation.py": "b0a51394a4304af88a747c55faef6fd031b99e9e51b0eee405ec315a0cfae04a",
+    "v3/test_archive.py": "643f96c586d65267eea036783f61d92b9627c7480fc952ec7b246e554c04727a",
+    "v3/test_benchmark.py": "862a692de0b75efef0faae9a5788ba70756f930621b1c7f670aa4306a0a4a710",
+    "v3/test_core.py": "bba23d436eebd75b9a5ab8eacd21f6a009ee98dff553b6d588953b1d2a2ec1d1",
+    "v3/test_design.py": "ad8310b58f6ebb2e9125d42575d533385e6751d156d233fe89e5ced2373a97bc",
+    "v3/test_integration.py": "211e7e3c87f8e83c0dc4e76ca28be35ae19fd543dcb8bbc61fb0521b7329db1e",
+    "v3/test_verify.py": "406fd781b2f45cad64bd7134120d6e3ab34784a2beb3b49ba3eee72884edeebb",
+    "v3/verify.py": "d0501b56cc77a49e78366562bd29dd36b7efa8f1ee3dc3fe43dea834885fa84c"
+  },
+  "sources_sha256": "5dcf2a109f9847c0dd654d662895875caa8bfda683b11f490fe99d073d4460a7",
+  "original_generator_source_sha256": "9028549e2d3e165bdffa7c5704d565ed0ebeeca3e170184571198ed72a5f4bfa",
+  "models": {
+    "generator": [
+      "qwen3.6:latest",
+      "07d35212591fc27746f0a317c975a6d68754fb38e9053d82e25f06057af28522"
+    ],
+    "embedding": [
+      "nomic-embed-text:latest",
+      "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f"
+    ]
+  },
+  "generation_options": {
+    "temperature": 0,
+    "seed": 20261112,
+    "num_ctx": 8192,
+    "num_predict": 256,
+    "num_thread": 8
+  },
+  "source_provenance": "Publish this amendment and every frozen file before new pilot or confirmation outcomes. The failed original pilot remains excluded. Local Git checks do not prove public availability; record that evidence separately. Dates are real."
+}

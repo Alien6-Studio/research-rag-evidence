@@ -2,8 +2,14 @@
 
 This is a separate prospective extension. V1/V2 observations, annotations,
 embeddings and scores remain unchanged. Read [the protocol](PROTOCOL.md),
+[amendment 01](AMENDMENT-01.md),
 [method review](LITERATURE.md), [power assumptions](data/power-planning.json)
-and [frozen cohort](data/cohorts.json) before interpreting any outcomes.
+and [active frozen cohort](data/cohorts-amendment-01.json) before interpreting any outcomes.
+
+The original pilot retains 128 contexts and 64 captured responses, but its
+certificate remains failed after a metadata-checker defect. The amendment uses
+a new disjoint pilot; the main cohort, policies and statistical families are
+unchanged. Original records and their failed eligibility remain inspectable.
 
 The planned controlled comparison contains 256 questions, four policies, two
 retrievers and two documentary budgets (4,096 contexts). Its fixed 128-question
@@ -29,9 +35,11 @@ python -m unittest discover -p 'test_*.py' -v
 python -m v3.design register
 ```
 
-Commit and publish the full registration before the first V3 context/model
-outcome. Record the real public PR creation timestamp, commit URL and registration
-SHA in `public-registration.json`. The collector requires this receipt and the
+The cohort/registration commands describe the original prospective setup, not
+instructions to overwrite supplied files. The active amendment uses separate
+registration and cohort paths. Publish its full instrument before any amendment
+context/model outcome. Record the real GitHub release timestamp, commit URL and
+registration SHA in `public-registration-amendment-01.json`. The collector requires this receipt and the
 committed frozen sources; a local file alone is not public preregistration.
 
 ```sh
@@ -55,7 +63,8 @@ different dependency set under the original registration.
 ## Offline reproduction
 
 After the complete observations are published, no inference service is needed:
-Use a full Git clone, including `protocol-rag-v3-2026-11-15`, so the verifier can
+Use a full Git clone, including `protocol-rag-v3-2026-11-15` and
+`protocol-rag-v3-2026-11-15-a1`, so the verifier can
 inspect the public registration commit even after the development PR is squashed.
 An existing shallow clone must fetch that protocol tag before offline replay.
 
@@ -68,7 +77,10 @@ python -m v3.verify --require-collected
 ```
 
 Before collection, `python -m v3.verify --protocol-only` checks the frozen design
-and cohort and explicitly requires the absence of experimental outcomes. That
+and cohort and explicitly requires the absence of active-amendment outcomes.
+The hash-bound excluded original pilot is retained separately. Restore it with
+`python -m v3.archive restore --manifest v3/amendments/01/retained-pilot-archive.json`
+when reproducing this registration stage before a final archive exists. That
 check never claims completed collection. CI chooses the appropriate mode from
 the presence of the lossless archive manifest.
 

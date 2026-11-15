@@ -33,9 +33,15 @@ def pack(root=ROOT):
     for path in sorted((base / 'runs').rglob('*')):
         if not path.is_file() or path.suffix not in ('.json', '.jsonl'):
             continue
-        raw = path.read_bytes(); encoded = gzip.compress(raw, mtime=0)
+        raw = path.read_bytes()
         stored = path.with_name(path.name + '.gz')
-        with stored.open('xb') as handle: handle.write(encoded)
+        if stored.exists():
+            encoded = stored.read_bytes()
+            if encoded[4:8] != b'\0' * 4 or gzip.decompress(encoded) != raw:
+                raise ValueError('Existing compressed observation differs')
+        else:
+            encoded = gzip.compress(raw, mtime=0)
+            with stored.open('xb') as handle: handle.write(encoded)
         entries.append({'source_path': path.relative_to(root).as_posix(),
                         'path': stored.relative_to(root).as_posix(), 'encoding': 'gzip',
                         'bytes': len(encoded), 'sha256': sha(encoded),
@@ -55,8 +61,9 @@ def pack(root=ROOT):
             'decoded_bytes': sum(x['decoded_bytes'] for x in entries)}
 
 
-def restore(root=ROOT):
-    root = Path(root); manifest = read(root / 'v3/archive-manifest.json')
+def restore(root=ROOT, manifest_path=None):
+    root = Path(root)
+    manifest = read(root / (manifest_path or 'v3/archive-manifest.json'))
     if manifest['schema'] != 'alien6-rag-v3-lossless-archive-v1':
         raise ValueError('Unknown V3 archive schema')
     paths = set(); restored = 0
@@ -90,5 +97,7 @@ def restore(root=ROOT):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('stage', choices=['pack', 'restore'])
+    parser.add_argument('--manifest', help='A retained epoch archive, for restoration only')
     args = parser.parse_args()
-    print(json.dumps(pack() if args.stage == 'pack' else restore(), indent=2))
+    if args.manifest and args.stage != 'restore': parser.error('--manifest is for restore only')
+    print(json.dumps(pack() if args.stage == 'pack' else restore(manifest_path=args.manifest), indent=2))

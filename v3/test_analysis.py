@@ -191,7 +191,7 @@ class InputIntegrityTests(unittest.TestCase):
                                      'retrieved_sentence_coverage': 1, 'selected': []})
         def read(path):
             name = Path(path).name
-            return {'confirmatory': cases, 'generation_ids': generation} if name == 'cohorts.json' else (
+            return {'confirmatory': cases, 'generation_ids': generation} if Path(path) == analysis.COHORTS else (
                 {'jobs_sha256': 'synthetic'} if name == 'preparation.json' else jobs)
         with patch.object(analysis, 'read_json', side_effect=read), \
                 patch.object(analysis, 'read_lines', return_value=[]), \
