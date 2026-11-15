@@ -7,8 +7,9 @@
   "semantic_results": null,
   "scope": "V3 reuses the V2 two-phase human rubric and calibration protection. Blank packets, lexical scores and model judgements are not human labels.",
   "prepared_material": {
-    "primary_outputs": 0,
+    "primary_outputs": 1024,
     "primary_phase1_released": false,
-    "mapping_keys": "outside the public repository"
+    "mapping_keys": "outside the public repository",
+    "calibration_controls": 16
   }
 }

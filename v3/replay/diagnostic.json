@@ -1,0 +1,135 @@
+{
+  "schema": "alien6-rag-v3-postcollection-hashseed-diagnostic-v1",
+  "created_utc": "2026-11-15T17:46:58.490242+00:00",
+  "timing": "Diagnostic performed after V3 context collection, while planned response collection was still running.",
+  "method": "Original frozen run.bm25 and v2.core.ranking, unmodified; fresh interpreter PYTHONHASHSEED only. Candidate seed choice used full-ranking fingerprint agreement, without answer quality or policy outcome differences.",
+  "original_collection_hash_seed": null,
+  "initial_failed_replay_hash_seed": null,
+  "chosen_replay_hash_seed": "10",
+  "replay_seed_was_preregistered": false,
+  "candidate_seeds_on_target": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10"
+  ],
+  "first_matching_target_seed": "10",
+  "target_question_id": "5a739ef955429978a71e904b",
+  "target_environment": "pooled",
+  "target_expected_ranking_sha256": "088a16036bb4a8ea9344d7bd92ba739d4d950b73ef692533fa486f76f4564874",
+  "target_seed0_ranking_sha256": "d5dea6c9bf667efa028f8fb7d8777d18ca380248b7049fd1a4a3b3eb8a1af04c",
+  "changed_positions_1based": [
+    226,
+    227
+  ],
+  "changed_positions": [
+    {
+      "rank": 226,
+      "matching_id": "d1767p000",
+      "matching_score": 4.114400305226007,
+      "divergent_id": "d1377p000",
+      "divergent_score": 4.114400305226006
+    },
+    {
+      "rank": 227,
+      "matching_id": "d1377p000",
+      "matching_score": 4.114400305226006,
+      "divergent_id": "d1767p000",
+      "divergent_score": 4.114400305226006
+    }
+  ],
+  "changed_score_absolute_delta": 8.881784197001252e-16,
+  "maximum_score_difference": 3.552713678800501e-15,
+  "preexisting_verifier_absolute_numeric_tolerance": 1e-12,
+  "complete_seed10_BM25_inventory": {
+    "confirmatory-controlled": 256,
+    "confirmatory-pooled": 256,
+    "pilot-01-controlled": 8,
+    "excluded-original-pilot-controlled": 8,
+    "total": 528,
+    "full_order_fingerprint_mismatches": 0,
+    "top_ten_ID_mismatches": 0
+  },
+  "preservation_checks": {
+    "v3/historical-preservation.json": {
+      "entries": 420,
+      "mismatches": []
+    },
+    "v3/registration-amendment-01.json": {
+      "entries": 30,
+      "mismatches": []
+    },
+    "v3/amendments/01/prior-evidence.json": {
+      "entries": 38,
+      "mismatches": []
+    }
+  },
+  "evidence_files": {
+    "v3/replay/bm25-controlled-seed0.json": {
+      "bytes": 219346,
+      "sha256": "634a3c0d9b55617f1a029aa5849d897ee9933924e766306458211b4f26c47cbf"
+    },
+    "v3/replay/bm25-controlled-seed10.json": {
+      "bytes": 219309,
+      "sha256": "e82d61a6c9f7debf1e44f09bdae259b61647ae7b24e77231a72994901dcc9afd"
+    },
+    "v3/replay/bm25-pilots-seed10.json": {
+      "bytes": 5534,
+      "sha256": "1b1a6f5da2b811b71529e5ec478be4de738721bdcd04910f0f2cc6bba57449e9"
+    },
+    "v3/replay/bm25-pooled-seed0.json": {
+      "bytes": 227263,
+      "sha256": "ad3756803dfed700cf4d59be21deae605089d8028a9c203632b8de1e432fd145"
+    },
+    "v3/replay/bm25-pooled-seed10.json": {
+      "bytes": 227563,
+      "sha256": "57df4a442a9f421486e41cccbbbf967cfdf93c7602f454136ef5107fb4de7681"
+    },
+    "v3/replay/initial-failed-replay.log": {
+      "bytes": 1294,
+      "sha256": "3ef45e872c3bcbee47436ff51f1acb932439353a707c92c1e0943da53cc3cc7c"
+    },
+    "v3/replay/seed-search.json": {
+      "bytes": 5882,
+      "sha256": "f9ea429ba05f59387ac0a17c52eb9c077c3086dd91546fb85311584fbd9221ff"
+    },
+    "v3/replay/target-seed0.json": {
+      "bytes": 166039,
+      "sha256": "b6b10b5a6cdc9745873728c1d1954ca704c5b95894e51b9928caf7ade5344005"
+    },
+    "v3/replay/target-seed10.json": {
+      "bytes": 166038,
+      "sha256": "636aee6ce64bfc12a2e3b56e10efb48617d25cdeeb134cabce6104d7ece43d51"
+    }
+  },
+  "reproduction_helper": {
+    "path": "validation/v3_hashseed_audit.py",
+    "sha256": "10aeb906c08c04f3690f9cfb721f1bca778db1c49d49b41aa9d9d650b91d33de"
+  },
+  "frozen_source_sha256": {
+    "run.py": "9028549e2d3e165bdffa7c5704d565ed0ebeeca3e170184571198ed72a5f4bfa",
+    "v2/core.py": "0a342f0cc805a67c5a6981da10249dbe89ad2c67a594aa78c31f6df09f313899",
+    "v3/benchmark.py": "b0aa3ebc2bba7483ef2ce29eba5c378a194e2fb3271950c84114f5ae8ba00754",
+    "v3/verify.py": "d0501b56cc77a49e78366562bd29dd36b7efa8f1ee3dc3fe43dea834885fa84c"
+  },
+  "official_proof_files": [
+    "v3/registration.json",
+    "v3/public-registration.json",
+    "v3/registration-amendment-01.json",
+    "v3/public-registration-amendment-01.json",
+    "v3/amendments/01/prior-evidence.json",
+    "v3/historical-preservation.json"
+  ],
+  "original_failure_log_preserved_byte_for_byte": true,
+  "frozen_source_or_observation_edits": false,
+  "rounding_or_monkeypatch": false,
+  "model_calls": 0,
+  "scope": "BM25 diagnostic only. The complete frozen verifier separately checks all registered collection, provenance and analysis requirements."
+}

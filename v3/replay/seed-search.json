@@ -1,0 +1,225 @@
+{
+  "seeds": [
+    {
+      "seed": "0",
+      "question_id": "5a739ef955429978a71e904b",
+      "expected_sha": "088a16036bb4a8ea9344d7bd92ba739d4d950b73ef692533fa486f76f4564874",
+      "replayed_sha": "d5dea6c9bf667efa028f8fb7d8777d18ca380248b7049fd1a4a3b3eb8a1af04c",
+      "matches": false,
+      "query_terms_iteration": [
+        "what",
+        "in",
+        "oklahoma",
+        "june",
+        "bartlesville",
+        "every",
+        "held",
+        "festival",
+        "is"
+      ]
+    },
+    {
+      "seed": "1",
+      "question_id": "5a739ef955429978a71e904b",
+      "expected_sha": "088a16036bb4a8ea9344d7bd92ba739d4d950b73ef692533fa486f76f4564874",
+      "replayed_sha": "d5dea6c9bf667efa028f8fb7d8777d18ca380248b7049fd1a4a3b3eb8a1af04c",
+      "matches": false,
+      "query_terms_iteration": [
+        "oklahoma",
+        "what",
+        "june",
+        "in",
+        "held",
+        "festival",
+        "every",
+        "is",
+        "bartlesville"
+      ]
+    },
+    {
+      "seed": "2",
+      "question_id": "5a739ef955429978a71e904b",
+      "expected_sha": "088a16036bb4a8ea9344d7bd92ba739d4d950b73ef692533fa486f76f4564874",
+      "replayed_sha": "d5dea6c9bf667efa028f8fb7d8777d18ca380248b7049fd1a4a3b3eb8a1af04c",
+      "matches": false,
+      "query_terms_iteration": [
+        "is",
+        "held",
+        "in",
+        "festival",
+        "june",
+        "what",
+        "bartlesville",
+        "every",
+        "oklahoma"
+      ]
+    },
+    {
+      "seed": "3",
+      "question_id": "5a739ef955429978a71e904b",
+      "expected_sha": "088a16036bb4a8ea9344d7bd92ba739d4d950b73ef692533fa486f76f4564874",
+      "replayed_sha": "d5dea6c9bf667efa028f8fb7d8777d18ca380248b7049fd1a4a3b3eb8a1af04c",
+      "matches": false,
+      "query_terms_iteration": [
+        "what",
+        "oklahoma",
+        "june",
+        "is",
+        "every",
+        "in",
+        "held",
+        "festival",
+        "bartlesville"
+      ]
+    },
+    {
+      "seed": "4",
+      "question_id": "5a739ef955429978a71e904b",
+      "expected_sha": "088a16036bb4a8ea9344d7bd92ba739d4d950b73ef692533fa486f76f4564874",
+      "replayed_sha": "d5dea6c9bf667efa028f8fb7d8777d18ca380248b7049fd1a4a3b3eb8a1af04c",
+      "matches": false,
+      "query_terms_iteration": [
+        "in",
+        "bartlesville",
+        "june",
+        "held",
+        "oklahoma",
+        "is",
+        "every",
+        "festival",
+        "what"
+      ]
+    },
+    {
+      "seed": "5",
+      "question_id": "5a739ef955429978a71e904b",
+      "expected_sha": "088a16036bb4a8ea9344d7bd92ba739d4d950b73ef692533fa486f76f4564874",
+      "replayed_sha": "d5dea6c9bf667efa028f8fb7d8777d18ca380248b7049fd1a4a3b3eb8a1af04c",
+      "matches": false,
+      "query_terms_iteration": [
+        "festival",
+        "every",
+        "in",
+        "bartlesville",
+        "what",
+        "is",
+        "june",
+        "oklahoma",
+        "held"
+      ]
+    },
+    {
+      "seed": "6",
+      "question_id": "5a739ef955429978a71e904b",
+      "expected_sha": "088a16036bb4a8ea9344d7bd92ba739d4d950b73ef692533fa486f76f4564874",
+      "replayed_sha": "d5dea6c9bf667efa028f8fb7d8777d18ca380248b7049fd1a4a3b3eb8a1af04c",
+      "matches": false,
+      "query_terms_iteration": [
+        "bartlesville",
+        "in",
+        "oklahoma",
+        "june",
+        "festival",
+        "is",
+        "held",
+        "every",
+        "what"
+      ]
+    },
+    {
+      "seed": "7",
+      "question_id": "5a739ef955429978a71e904b",
+      "expected_sha": "088a16036bb4a8ea9344d7bd92ba739d4d950b73ef692533fa486f76f4564874",
+      "replayed_sha": "d5dea6c9bf667efa028f8fb7d8777d18ca380248b7049fd1a4a3b3eb8a1af04c",
+      "matches": false,
+      "query_terms_iteration": [
+        "held",
+        "festival",
+        "every",
+        "is",
+        "june",
+        "what",
+        "oklahoma",
+        "bartlesville",
+        "in"
+      ]
+    },
+    {
+      "seed": "8",
+      "question_id": "5a739ef955429978a71e904b",
+      "expected_sha": "088a16036bb4a8ea9344d7bd92ba739d4d950b73ef692533fa486f76f4564874",
+      "replayed_sha": "d5dea6c9bf667efa028f8fb7d8777d18ca380248b7049fd1a4a3b3eb8a1af04c",
+      "matches": false,
+      "query_terms_iteration": [
+        "held",
+        "bartlesville",
+        "in",
+        "oklahoma",
+        "festival",
+        "every",
+        "june",
+        "is",
+        "what"
+      ]
+    },
+    {
+      "seed": "9",
+      "question_id": "5a739ef955429978a71e904b",
+      "expected_sha": "088a16036bb4a8ea9344d7bd92ba739d4d950b73ef692533fa486f76f4564874",
+      "replayed_sha": "d5dea6c9bf667efa028f8fb7d8777d18ca380248b7049fd1a4a3b3eb8a1af04c",
+      "matches": false,
+      "query_terms_iteration": [
+        "every",
+        "oklahoma",
+        "in",
+        "is",
+        "what",
+        "bartlesville",
+        "festival",
+        "held",
+        "june"
+      ]
+    },
+    {
+      "seed": "10",
+      "question_id": "5a739ef955429978a71e904b",
+      "expected_sha": "088a16036bb4a8ea9344d7bd92ba739d4d950b73ef692533fa486f76f4564874",
+      "replayed_sha": "088a16036bb4a8ea9344d7bd92ba739d4d950b73ef692533fa486f76f4564874",
+      "matches": true,
+      "query_terms_iteration": [
+        "june",
+        "festival",
+        "oklahoma",
+        "bartlesville",
+        "held",
+        "is",
+        "in",
+        "every",
+        "what"
+      ]
+    }
+  ],
+  "matching_seed": "10",
+  "divergent_seed": "0",
+  "changed_positions_1based": [
+    226,
+    227
+  ],
+  "maximum_score_difference": 3.552713678800501e-15,
+  "changed_positions": [
+    {
+      "rank": 226,
+      "matching_id": "d1767p000",
+      "matching_score": 4.114400305226007,
+      "divergent_id": "d1377p000",
+      "divergent_score": 4.114400305226006
+    },
+    {
+      "rank": 227,
+      "matching_id": "d1377p000",
+      "matching_score": 4.114400305226006,
+      "divergent_id": "d1767p000",
+      "divergent_score": 4.114400305226006
+    }
+  ]
+}

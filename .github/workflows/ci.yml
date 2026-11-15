@@ -48,6 +48,8 @@ jobs:
         run: python -m v2.article_evidence --check
       - name: Verify the registered V3 instrument or complete collection offline
         if: ${{ hashFiles('v3/registration-amendment-01.json') != '' }}
+        env:
+          PYTHONHASHSEED: '10'
         run: |
           if test -f v3/archive-manifest.json; then
             python -m v3.verify --require-collected > v3/verification.json

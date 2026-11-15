@@ -11,7 +11,7 @@ certificate remains failed after a metadata-checker defect. The amendment uses
 a new disjoint pilot; the main cohort, policies and statistical families are
 unchanged. Original records and their failed eligibility remain inspectable.
 
-The planned controlled comparison contains 256 questions, four policies, two
+The completed controlled comparison contains 256 questions, four policies, two
 retrievers and two documentary budgets (4,096 contexts). Its fixed 128-question
 generation subset uses only 512 tokens (1,024 primary outputs). Eight separate
 pilot questions qualify the apparatus on technical criteria. A shared-corpus
@@ -21,6 +21,12 @@ The policies are unchanged ranked chunks, a declared MMR chunk variant, original
 sentences in inherited ranking order, and a question-oriented MMR sentence
 variant. They are not reproductions of RECOMP, LongLLMLingua or SetR. Every
 context pays for titles, original sentence coordinates and separators.
+
+The [scientific results](RESULTS.md), [article evidence ledger](ARTICLE_EVIDENCE.md)
+and [local full replay record](replay/local-verification.json) report the completed
+collection. The main run retains five invalid outputs among 1,024 observed bodies.
+There are no missing main observations and no supplied human semantic labels.
+The [lossless manifest](archive-manifest.json) verifies 846 archived files.
 
 ## Registration and collection
 
@@ -52,7 +58,7 @@ python -m v3.benchmark prepare --split confirmatory --environment pooled
 python -m v3.analysis --environment controlled
 python -m v3.analysis --environment pooled
 python -m v3.archive pack
-python -m v3.verify --require-collected
+PYTHONHASHSEED=10 python -m v3.verify --require-collected
 ```
 
 The pilot's three tokenizer probes and all 64 responses must qualify without an
@@ -71,10 +77,18 @@ An existing shallow clone must fetch that protocol tag before offline replay.
 ```sh
 python prepare_data.py
 python -m v2.archive restore
+python -m v3.archive restore --manifest v3/amendments/01/retained-pilot-archive.json
 python -m v3.archive restore
 python -m unittest discover -p 'test_*.py' -v
-python -m v3.verify --require-collected
+PYTHONHASHSEED=10 python -m v3.verify --require-collected
 ```
+
+Read [the post-collection BM25 replay note](REPLAY.md) before reproducing V3.
+The original collection hash seed was not recorded. Seed 10 was selected after
+context collection using exact ranking fingerprints, and reproduces all 528
+BM25 fingerprints without changing the frozen instrument or observations. It
+is a replay configuration, not a preregistered collection parameter. The note
+preserves the original failure, a divergent seed witness and the full audit.
 
 Before collection, `python -m v3.verify --protocol-only` checks the frozen design
 and cohort and explicitly requires the absence of active-amendment outcomes.

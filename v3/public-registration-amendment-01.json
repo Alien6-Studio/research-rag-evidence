@@ -1,0 +1,14 @@
+{
+  "publication_kind": "release",
+  "published_at": "2026-11-15T17:14:23Z",
+  "release_id": 446224457,
+  "release_url": "https://github.com/Alien6-Studio/research-rag-evidence/releases/tag/protocol-rag-v3-2026-11-15-a1",
+  "commit": "62657fd9774943b09552f8a9895e7877243a8664",
+  "commit_url": "https://github.com/Alien6-Studio/research-rag-evidence/commit/62657fd9774943b09552f8a9895e7877243a8664",
+  "protocol_tag": "protocol-rag-v3-2026-11-15-a1",
+  "github_pull_request": 15,
+  "github_pull_request_created_at": "2026-11-15T16:53:18Z",
+  "registration_sha256": "0b868b6460492e8f0784b94ea9a69dc389cf0f96a7aedd2414267b92bac896db",
+  "source_publicly_verified_utc": "2026-11-15T17:15:25.418594+00:00",
+  "scope": "The amended source and registration were publicly fetched and compared before replacement-pilot or confirmation outcomes. The release timestamp, not the older PR creation time, is the publication boundary."
+}

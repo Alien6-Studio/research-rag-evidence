@@ -4,18 +4,58 @@ A reproducible study of the path from retrieved passages to transmitted evidence
 and generated answers. It separates missing evidence, lexical scoring limits,
 abstentions, and invalid outputs.
 
-- [Complete study and conclusions](RESULTS.md)
-- [Experimental protocol](PROTOCOL.md)
+- [V2 study and conclusions](RESULTS.md)
+- [V2 experimental protocol](PROTOCOL.md)
 - [Material for scientific writing](ARTICLE_EVIDENCE.md)
 - [Evidence index](EVIDENCE.md)
 - [Scope and limits](VALIDITY.md)
 - [Execution and analysis code](v2/)
 - [Independent human annotation](v2/ANNOTATION.md) — prepared; not yet performed
+- [V3 selection study](v3/README.md), [amendment](v3/AMENDMENT-01.md)
+  and [interpretation boundaries](v3/VALIDITY.md)
 
-The controlled experiment covers **256 questions**. Its fixed answer subset has
+The V2 controlled experiment covers **256 questions**. Its fixed answer subset has
 **128 questions and eight configurations**, yielding **1,024 primary outputs**.
 A disjoint pilot and identical-request repeats check the apparatus. A separate
 shared-corpus experiment tests retrieval beyond ten preselected paragraphs.
+
+## Equal-budget selection extension (V3)
+
+V3 is a separate prospective comparison of ranked passages, a declared MMR
+passage variant, original sentences in inherited rank order, and question-aware
+sentence MMR. It fixes the same retrieved candidates and fully rendered token
+budget for each paired comparison. The new design contains 256 deterministic
+questions and a fixed 128-question generation subset; its primary generation
+budget is 512 tokens. Its pooled-corpus sensitivity has no generation arm.
+
+Read the [registered methods](v3/PROTOCOL.md),
+[prospective amendment 01](v3/AMENDMENT-01.md),
+[primary-source review](v3/LITERATURE.md) and [validity guide](v3/VALIDITY.md).
+The original pilot's failed qualification and raw records are retained. The
+amendment uses a new disjoint pilot while preserving the original confirmation
+cohort, generation membership, policies and analysis families. V3 conclusions
+require complete archived observations and successful offline replay; this
+navigation entry does not anticipate a policy benefit. All historical V1/V2
+observations and scores remain unchanged.
+
+The [V3 results](v3/RESULTS.md) report the completed extension: 4,096 controlled
+contexts, 4,096 separate pooled contexts and 1,024 primary generated outputs.
+BM25 complete annotated contexts rise from 136/256 with ranked chunks to
+203/256 with question-aware sentence MMR at the 512-token cap. Dense results
+are mixed, and no lexical/unanswered contrast passes its registered correction.
+Five invalid outputs are preserved. Independent human semantic annotation is
+still pending. The [article evidence ledger](v3/ARTICLE_EVIDENCE.md) separates
+these outcomes and their denominators.
+
+Offline replay verified all 846 V3 lossless archives, active pilot/main records
+and the excluded original pilot without model calls. Read the
+[post-collection numerical replay note](v3/REPLAY.md): the original hash seed
+was not captured; seed 10 is a compatible replay configuration identified on
+ranking hashes after context collection, without changing the frozen instrument.
+
+The [V3 guide](v3/README.md) gives separate collection, archive-restoration,
+verification and independent-human-review commands. A lexical answer score or
+retained annotation is not a human judgement of correctness or support.
 
 ## Reproduce the calculations
 

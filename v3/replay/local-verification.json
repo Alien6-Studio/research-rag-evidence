@@ -1,0 +1,54 @@
+{
+  "status": "complete archived collection verified",
+  "collections": {
+    "pilot-controlled": {
+      "contexts": 128,
+      "planned": 64,
+      "observed": 64,
+      "errors": 0,
+      "output_failures_reconstructed": 0,
+      "transport_or_unknown_failures": 0,
+      "unobserved_intents": 0
+    },
+    "confirmatory-controlled": {
+      "contexts": 4096,
+      "planned": 1024,
+      "observed": 1024,
+      "errors": 5,
+      "output_failures_reconstructed": 5,
+      "transport_or_unknown_failures": 0,
+      "unobserved_intents": 0
+    },
+    "confirmatory-pooled": {
+      "contexts": 4096,
+      "planned": 0,
+      "observed": 0,
+      "errors": 0,
+      "output_failures_reconstructed": 0,
+      "transport_or_unknown_failures": 0,
+      "unobserved_intents": 0
+    }
+  },
+  "missing_collections": [],
+  "retained_original_pilot": {
+    "role": "diagnostic replay only; original pilot remains excluded",
+    "included_for_confirmation": false,
+    "recorded_passed": false,
+    "corrected_input_replay_passed": true,
+    "contexts": 128,
+    "responses": 64,
+    "errors": 0,
+    "tokenizer_probes": 3,
+    "embedding_packets": 24,
+    "model_calls": 0
+  },
+  "inherited_embedding_packets": 24,
+  "unassigned_embedding_packets": [],
+  "archive": {
+    "verified_files": 846,
+    "restored_files": 0,
+    "model_calls": 0
+  },
+  "semantic_validation": "pending independent human annotation",
+  "model_calls": 0
+}
