@@ -1,0 +1,24 @@
+{
+  "schema": "alien6-captured-publication-record-v1",
+  "packaged_utc": "2026-11-15T18:51:40.789107+00:00",
+  "scope": "Selected metadata from a GitHub Release API response captured before repository-history consolidation. This preserves the original publication record; it is not a new or retroactive preregistration or an independent timestamp attestation. Original receipts and scientific records are unchanged.",
+  "source_api_response_bytes": 2639,
+  "release": {
+    "id": 446224457,
+    "url": "https://api.github.com/repos/Alien6-Studio/research-rag-evidence/releases/446224457",
+    "html_url": "https://github.com/Alien6-Studio/research-rag-evidence/releases/tag/protocol-rag-v3-2026-11-15-a1",
+    "tag_name": "protocol-rag-v3-2026-11-15-a1",
+    "target_commitish": "62657fd9774943b09552f8a9895e7877243a8664",
+    "name": "RAG V3 protocol amendment 01: technical pilot verification",
+    "created_at": "2026-11-15T17:11:26Z",
+    "published_at": "2026-11-15T17:14:23Z",
+    "draft": false,
+    "prerelease": true
+  },
+  "original_public_receipt": {
+    "path": "v3/public-registration-amendment-01.json",
+    "sha256": "adcd805ab3c49a0dd4eb8d221dc5daccc4c59a0c80e9ff63b2ce9e98e75ad958"
+  },
+  "historical_url_scope": "Recorded references may no longer resolve after retiring old tags/releases; publication timestamps refer to the captured original record.",
+  "captured_response_sha256": "bad6a8b746ce1e2a1dd4587093d1bf8d6c8ee7f7e7a14809a8981062b2e313f7"
+}

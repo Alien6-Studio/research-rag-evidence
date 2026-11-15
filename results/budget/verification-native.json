@@ -1,0 +1,74 @@
+{
+  "contexts_verified": 4160,
+  "generation_observations_verified": 1120,
+  "model_calls_during_verification": 0,
+  "groups": [
+    {
+      "split": "pilot",
+      "environment": "controlled",
+      "contexts": 64,
+      "generation": {
+        "observations": 64,
+        "errors": 0,
+        "failures_reconstructed_from_raw_response": 0,
+        "failures_without_observed_response": 0
+      }
+    },
+    {
+      "split": "confirmatory",
+      "environment": "controlled",
+      "contexts": 2048,
+      "generation": {
+        "observations": 1024,
+        "errors": 1,
+        "failures_reconstructed_from_raw_response": 1,
+        "failures_without_observed_response": 0
+      },
+      "repeats": [
+        {
+          "observations": 16,
+          "errors": 0,
+          "failures_reconstructed_from_raw_response": 0,
+          "failures_without_observed_response": 0
+        },
+        {
+          "observations": 16,
+          "errors": 0,
+          "failures_reconstructed_from_raw_response": 0,
+          "failures_without_observed_response": 0
+        }
+      ]
+    },
+    {
+      "split": "confirmatory",
+      "environment": "pooled",
+      "contexts": 2048
+    }
+  ],
+  "statistical_replay": [
+    {
+      "environment": "controlled",
+      "estimates_intervals_pvalues_reproduced": true,
+      "numeric_tolerance": 1e-12,
+      "diagnostic_tables_reproduced": true
+    },
+    {
+      "environment": "pooled",
+      "estimates_intervals_pvalues_reproduced": true,
+      "numeric_tolerance": 1e-12,
+      "diagnostic_tables_reproduced": true
+    }
+  ],
+  "independent_references": "All recorded full BM25/cosine rankings and token-packing selections recomputed independently.",
+  "environment": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "dependencies": {
+      "numpy": "2.5.4",
+      "pyarrow": "26.0.1",
+      "tokenizers": "0.23.3",
+      "ujson": "6.1.0"
+    }
+  },
+  "semantic_scope": "Reproduced retrieval, selected text, tokenization, requests, parsing, and lexical/citation calculations. This is not a judgement of factual correctness."
+}

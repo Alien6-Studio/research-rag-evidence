@@ -1,0 +1,4 @@
+# Same pinned public tokenizer digest; exact known false positives only.
+# Source bytes and their prior scanner record are preserved by the layout map.
+data/selection/cohorts.json:generic-api-key:25005
+data/selection/cohorts-amendment-01.json:generic-api-key:25078

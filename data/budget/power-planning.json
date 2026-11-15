@@ -1,0 +1,47 @@
+{
+  "method": "Normal approximation for a paired binary difference with specified discordance; conservative alpha=.01. Planning assumptions, not observed power.",
+  "scenarios": [
+    {
+      "questions": 128,
+      "discordance_assumption": 0.1,
+      "conservative_family_size": 5,
+      "alpha_per_comparison": 0.01,
+      "approximate_80pct_mde": 0.09552064638434431
+    },
+    {
+      "questions": 128,
+      "discordance_assumption": 0.3,
+      "conservative_family_size": 5,
+      "alpha_per_comparison": 0.01,
+      "approximate_80pct_mde": 0.16544661270950473
+    },
+    {
+      "questions": 128,
+      "discordance_assumption": 0.5,
+      "conservative_family_size": 5,
+      "alpha_per_comparison": 0.01,
+      "approximate_80pct_mde": 0.2135906585701134
+    },
+    {
+      "questions": 256,
+      "discordance_assumption": 0.1,
+      "conservative_family_size": 5,
+      "alpha_per_comparison": 0.01,
+      "approximate_80pct_mde": 0.06754329680169213
+    },
+    {
+      "questions": 256,
+      "discordance_assumption": 0.3,
+      "conservative_family_size": 5,
+      "alpha_per_comparison": 0.01,
+      "approximate_80pct_mde": 0.11698842177123522
+    },
+    {
+      "questions": 256,
+      "discordance_assumption": 0.5,
+      "conservative_family_size": 5,
+      "alpha_per_comparison": 0.01,
+      "approximate_80pct_mde": 0.15103140307302776
+    }
+  ]
+}

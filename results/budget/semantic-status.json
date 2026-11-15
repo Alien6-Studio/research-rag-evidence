@@ -1,0 +1,15 @@
+{
+  "status": "pending independent human annotation",
+  "expected_primary_outputs": 1024,
+  "required_independent_reviewers": 2,
+  "human_annotations_supplied": 0,
+  "adjudications_supplied": 0,
+  "semantic_results": null,
+  "scope": "Prepared tools and blank packets are not completed semantic validation. Lexical scores remain separate.",
+  "prepared_material": {
+    "calibration_outputs": 16,
+    "primary_outputs": 1024,
+    "primary_phase1_released": false,
+    "mapping_keys": "outside the public repository"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "utc": "2026-11-12T18:40:51.198473+00:00",
+  "system": "Linux",
+  "machine": "aarch64",
+  "python": "3.12.16 (main, Nov  5 2026, 08:06:51) [GCC 12.2.0]",
+  "validator_sha256": "f8cde190cfc8d6ccf0dc73d6ddf8d89b1e5be704784b19b30e5097a513a64e8c",
+  "dependencies": {
+    "numpy": "2.3.4",
+    "pyarrow": "23.0.1",
+    "tokenizers": "0.22.1",
+    "ujson": "5.13.0"
+  },
+  "audited_questions": 64,
+  "audited_primary_generations": 512,
+  "recomputed_rankings": 128,
+  "canonical_question_metrics_sha256": "a8f12b166a2fb8879a2e1a9c57ad3ccd28140bb55dd617bbba9fa03fb7af4f1c",
+  "scope": "Recomputes rankings from cached embedding vectors, context selection, budgets, prompts, and official scoring. Does not rerun embedding or answer generation and does not benchmark speed."
+}

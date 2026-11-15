@@ -1,0 +1,14 @@
+8aefbf7ba34f37531d38d5e76e78252995fbcfab87c4441f18ab7456fb65c0d0  evidence/generation-primary.txt
+9cec3dfae9b756f65cc5fa207d385adb63ab77c2224d28614462a64321095049  evidence/generation-controls.txt
+3b951a4ec29202b53f0f50653328cb6f11d6ca3b1aa5582fad73851ce0d2e7b2  evidence/generation-repeat-1.txt
+3b951a4ec29202b53f0f50653328cb6f11d6ca3b1aa5582fad73851ce0d2e7b2  evidence/generation-repeat-2.txt
+c1279814b7628edbd1715e1a6ed3c4d1fd4c23f0cd8fcde89c7683ddae79098c  runs/2026-11-12-rag/cases.json
+03d0ca398b37ab2367dbdb7743f5ef7e246bca04071db69689fc752558d21c1c  runs/2026-11-12-rag/manifest.json
+1e48ec489a89f7f8e9ca6ca0a3463ae857274cf37b7f8e4122b7f246be094d79  runs/2026-11-12-rag/tokenizer-calibration.json
+e4c99f528fc8ed85cbde1b64bfaf85ef41a2d4870a82dec1fa61634aa7becac0  runs/2026-11-12-rag/jobs.json
+6d3b97fea44cdb7af59e4922ded148f9ed7d6389440a8c0b32a03d4c91877abe  runs/2026-11-12-rag/retrieval-sensitivity.json
+a44bc2a91a9cd3498d7220963692243ef43bb9111b57d5cf4ebecac91180d1d9  runs/2026-11-12-rag/preparation-complete.json
+73e2aa382726ba89a7d1b5c82996241ebbb2d6d476dec02afb9fe9965ce4f48b  runs/2026-11-12-rag/answers.jsonl
+c4bef6d443a3530a760a069eea5c108c518ab4fda80bf38d9bbc7ef844999fc0  runs/2026-11-12-rag/generator-controls.jsonl
+627c805cc77a112838e7747f829c4ca3ed9695843175b9fc8be5fd6549d17985  runs/2026-11-12-rag/answers-repeat-1.jsonl
+b66bb9431d40de5edcd192e832b6c5633060d1633504e34063ccfd4ea2787ed7  runs/2026-11-12-rag/answers-repeat-2.jsonl

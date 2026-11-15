@@ -1,0 +1,8 @@
+{
+  "image_id": "sha256:12ea19ed308d8790ebe0ab4fd9e92825f4b8003dcd2c66af8554de9922da0100",
+  "dockerfile": "validation/Dockerfile.replay",
+  "requirements_sha256": "ae6c888daf34b6a7f26569ac2dc56013f446e405959f000f6f9900414252a6c4",
+  "linux_network": "disabled",
+  "study_mount": "read-only",
+  "scope": "Computational replay on native macOS and a Linux container; no new generation or independent model replication."
+}

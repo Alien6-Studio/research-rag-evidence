@@ -1,0 +1,642 @@
+{
+  "schema": "alien6-registration-git-proof-v1",
+  "scope": "partial Git Merkle proofs; no historical refs",
+  "description": "The two original Git commit objects and only the trees and blobs needed by the frozen verifier. Parent history and unrelated sibling objects are deliberately absent. Restore only in a temporary ODB; never add historical refs or replace the current history. This preserves byte bindings, not an independent timestamp attestation. Original public receipts remain unchanged.",
+  "capsule": {
+    "path": "provenance/registration-objects.json.gz",
+    "encoding": "gzip JSON containing a standalone base64 Git pack",
+    "bytes": 741017,
+    "sha256": "caccd8fe1a353e4d69f60a4f724b304c1648fe66ec9eab6aef076c010efae5be",
+    "decoded_bytes": 978275,
+    "decoded_sha256": "85a67a0e1de097524d320bb858a3635fdb75fea068d723627c896fbfbec6315e",
+    "pack_bytes": 733658,
+    "pack_sha256": "ecc589d570c606f40348d15488c80b653961f8eca2582e38f64c682b332782e0"
+  },
+  "object_count": 51,
+  "objects": [
+    {
+      "oid": "026f9aeddba670d3623d3c65d9ff25ae8f3ad039",
+      "type": "blob",
+      "bytes": 768,
+      "sha256": "d610f697f57441b1e9bde45fc599f1431120d5c8ab23412a90b2471be1d8a15d"
+    },
+    {
+      "oid": "128be0a90b63b28c42fa6a94339c054898c523d6",
+      "type": "blob",
+      "bytes": 4765,
+      "sha256": "862a692de0b75efef0faae9a5788ba70756f930621b1c7f670aa4306a0a4a710"
+    },
+    {
+      "oid": "1443a6dc30c74cbbdca95a793292e4764bcb95a9",
+      "type": "blob",
+      "bytes": 4409,
+      "sha256": "1f7609a2af6df09d1b0ce70ca5ba7de011d5fe1a2d9802ab65fa4a37bf944d39"
+    },
+    {
+      "oid": "256505ecd8c06195584a822e24a391d4deac1fe2",
+      "type": "blob",
+      "bytes": 908,
+      "sha256": "5dcf2a109f9847c0dd654d662895875caa8bfda683b11f490fe99d073d4460a7"
+    },
+    {
+      "oid": "297d6106ada32a23efbcdc122a016313b2789413",
+      "type": "tree",
+      "bytes": 87,
+      "sha256": "cb5a86d04f4394c5d4194eaad1593d3fcc1bb7275dfe1726dcc42a9978e76ca7"
+    },
+    {
+      "oid": "2da60252f2ab109dac2367aa10907841990657b0",
+      "type": "blob",
+      "bytes": 49954,
+      "sha256": "2760fc4d21cfba96466100a210b10093a995a255bab4104e69d73e0a372e60f3"
+    },
+    {
+      "oid": "2e07343cc05e2411213d4264d7c9fd0766737c0b",
+      "type": "blob",
+      "bytes": 1871107,
+      "sha256": "af6d3d4b21a0857e193c036cf7a1bb1616e9d523da0f826fe37d76a7383e72fe"
+    },
+    {
+      "oid": "327d26c3d45e6089ddeafa78bfbfa2a60bb497b5",
+      "type": "blob",
+      "bytes": 458,
+      "sha256": "ae6c888daf34b6a7f26569ac2dc56013f446e405959f000f6f9900414252a6c4"
+    },
+    {
+      "oid": "36b701cf5a5bf499a5dcfb022e2463fb9d57b439",
+      "type": "blob",
+      "bytes": 20279,
+      "sha256": "b0aa3ebc2bba7483ef2ce29eba5c378a194e2fb3271950c84114f5ae8ba00754"
+    },
+    {
+      "oid": "39296d5fcfe61c12f237873ac69fcc070792565d",
+      "type": "blob",
+      "bytes": 12657,
+      "sha256": "0a3c69f1f4e85e3a8fb1b87b8d1a5c0fb6916044d9ed1ce27403035ffefdd3bd"
+    },
+    {
+      "oid": "3940bb046f372fa28977774e081c3f3f347b1b3f",
+      "type": "blob",
+      "bytes": 12657,
+      "sha256": "8278a200783fd02021b92bb18f3a745ad8df41b75f9626c74dc2a2465ea9fda9"
+    },
+    {
+      "oid": "3fe9ec3c171c924e71d23ac0b99d3f56406158e0",
+      "type": "tree",
+      "bytes": 949,
+      "sha256": "1d258a710916bcb18a6f5da1e465820e1cb51db71322b99d78cee09bd72c11db"
+    },
+    {
+      "oid": "4ad1e27dd0a28d3ca0a867b8125931943e36536a",
+      "type": "blob",
+      "bytes": 2327,
+      "sha256": "a2199ae2063eeba30938f8546b3d348bcfd91ba688ef79d703b68ab1525b47b4"
+    },
+    {
+      "oid": "4ef497429ea014a76da125dca5e100daa5132171",
+      "type": "tree",
+      "bytes": 102,
+      "sha256": "42aba8fc26131fd3c319986ed512f6c92098875643e872c8ff5e9d1491b196b7"
+    },
+    {
+      "oid": "503e624a725fe27ab9501046e97e12c81caf5b99",
+      "type": "blob",
+      "bytes": 4159,
+      "sha256": "0b868b6460492e8f0784b94ea9a69dc389cf0f96a7aedd2414267b92bac896db"
+    },
+    {
+      "oid": "5139a51c606f79ac34c9146f91b2ec4d3d3c5785",
+      "type": "blob",
+      "bytes": 12629,
+      "sha256": "7eb9880117015064b7c52b215f38284cf1205863a7a38a5551bf3ee5ca60896c"
+    },
+    {
+      "oid": "5644323bbae1910eeb2f558741134a1837eab3be",
+      "type": "blob",
+      "bytes": 66,
+      "sha256": "e0a6080316c70a1276bca4cd2bbac9abccf28352d0054cbccdfb48af4770cf71"
+    },
+    {
+      "oid": "6155427183b0e590841f0cab882bad6e41b98f16",
+      "type": "blob",
+      "bytes": 5115,
+      "sha256": "c122a6688fd6189b39792c4798e4afa4d299a9b69785afa223f881e869dc6365"
+    },
+    {
+      "oid": "62657fd9774943b09552f8a9895e7877243a8664",
+      "type": "commit",
+      "bytes": 340,
+      "sha256": "bdd6a7cc887fed6d906a1ba9b2db66417d2252aee00307b70fccf301ba7b2e95"
+    },
+    {
+      "oid": "654ce706cc53b637da7a76adc604e1b3fc962138",
+      "type": "blob",
+      "bytes": 12637,
+      "sha256": "6613f58233e9bd921e43bd33e064c8eddfca6f57297e473f98baa6f0fc319e6e"
+    },
+    {
+      "oid": "69f3ea142f65319397209978d136332997a89925",
+      "type": "blob",
+      "bytes": 11782,
+      "sha256": "0a53d765baacc533ed56ce3b372a7cdfd5ee1e62d8421aab431ee5c09b7b8641"
+    },
+    {
+      "oid": "6bd23c67d5e059d111cbc83a3c3810a91a46e21a",
+      "type": "blob",
+      "bytes": 7414,
+      "sha256": "b0a51394a4304af88a747c55faef6fd031b99e9e51b0eee405ec315a0cfae04a"
+    },
+    {
+      "oid": "72ae2cf42ed507d405d8083612d8afa539733030",
+      "type": "blob",
+      "bytes": 1883307,
+      "sha256": "2adb7f010e3bee6df7786ee585ef37f13c14f0fcc9ebf0823761e7e08a2e1a9d"
+    },
+    {
+      "oid": "75c1d688f828119ce9989d37bb02cfadb1d17251",
+      "type": "blob",
+      "bytes": 20022,
+      "sha256": "c7f19f5ca9677d0bc844c36d04f536552a022cfed7f2ea46bafae788fbae1a72"
+    },
+    {
+      "oid": "76a40682d1225810b69ad0e642378f32d8d8c3af",
+      "type": "blob",
+      "bytes": 21305,
+      "sha256": "4415effeba4748e68f974ac29b0b7733910cbd64a1e58be7e701944ad9c1bba9"
+    },
+    {
+      "oid": "815f8e37665b2c4ef296994e3ecec112d522ff73",
+      "type": "blob",
+      "bytes": 10046,
+      "sha256": "08ee3b40ce8acde34976ca8c464216d3af9aa71e215dc3714302b6feb3cc0488"
+    },
+    {
+      "oid": "81e78dabfd7661b59ab51456d2eb431c7b7ba3be",
+      "type": "blob",
+      "bytes": 15029,
+      "sha256": "7710f742096b4d22c13fd59670f56dd9b1d7a8e039c7dd2ebde1129ca32e1f4e"
+    },
+    {
+      "oid": "8b9900b08bce5f3cdf5a280a04c4afd517a90e11",
+      "type": "blob",
+      "bytes": 23786,
+      "sha256": "b5979c90cda8bff469513c61e7a38d2dc533902af5dc815fd1ade0301d919bae"
+    },
+    {
+      "oid": "90fecf74f2cbfeaf52618688681c366430604042",
+      "type": "commit",
+      "bytes": 337,
+      "sha256": "1dc20316b71dcabc0deb07d8e6823b717d1c9cc2f3c731f42a85aad68e57255a"
+    },
+    {
+      "oid": "9381152b1b3b5cea60ebc30a0e9f1004cce1d1d1",
+      "type": "blob",
+      "bytes": 11742,
+      "sha256": "ad8310b58f6ebb2e9125d42575d533385e6751d156d233fe89e5ced2373a97bc"
+    },
+    {
+      "oid": "95d7b47d72a693f5ee2cf96080cfd87f9cab0491",
+      "type": "tree",
+      "bytes": 140,
+      "sha256": "a179ab918151555b7530d45e11b5792a4bcc82fb10fe468e65dd03de8009157e"
+    },
+    {
+      "oid": "a35f1ab1b64e4cc9b894e00f89e5a4ee7e18bd61",
+      "type": "blob",
+      "bytes": 1019,
+      "sha256": "27cb3185a2c9a1101ff27e18ea90fec6630b2f25d2918ebfa523784f712bf0d1"
+    },
+    {
+      "oid": "a869eaef05ba8bc01ed89f98c2263ebb0b158d29",
+      "type": "blob",
+      "bytes": 4604,
+      "sha256": "f26e1e91aa70f2410661440f7fe980085100ae9b6744457f3b49aaddcc819985"
+    },
+    {
+      "oid": "a90243ee36b981fe6b331a1887a5db8846767168",
+      "type": "blob",
+      "bytes": 20728,
+      "sha256": "9028549e2d3e165bdffa7c5704d565ed0ebeeca3e170184571198ed72a5f4bfa"
+    },
+    {
+      "oid": "ac5526b2ccf2dd10ed9147a18ee562ef95bdaf60",
+      "type": "tree",
+      "bytes": 1475,
+      "sha256": "fd2a46f92a714cb86ad86a491643c8ecf5b140ea46a9c30ad567059ee6042dd6"
+    },
+    {
+      "oid": "afb9b14abcfd8f3cfb527ea19582f91db67887db",
+      "type": "blob",
+      "bytes": 1742,
+      "sha256": "8540d231f7458055ee71913b9c34b196a5583b4dc7b9d33a312ac105162bb829"
+    },
+    {
+      "oid": "b21507ae0f467ad89657faad0c81bad4fefb261d",
+      "type": "tree",
+      "bytes": 1475,
+      "sha256": "f29f364a23916c8c0891560681ea3502d246061dd43731bb63d581126034e01e"
+    },
+    {
+      "oid": "bf97ce920379939ba2fbd5ec98b531b67b9b0823",
+      "type": "blob",
+      "bytes": 13392,
+      "sha256": "211e7e3c87f8e83c0dc4e76ca28be35ae19fd543dcb8bbc61fb0521b7329db1e"
+    },
+    {
+      "oid": "c0bb42fd5774929d48caed2b9b24f7b433c343c3",
+      "type": "blob",
+      "bytes": 31673,
+      "sha256": "d0501b56cc77a49e78366562bd29dd36b7efa8f1ee3dc3fe43dea834885fa84c"
+    },
+    {
+      "oid": "c582246332bf2620cff18cae4a9f1449bed24aeb",
+      "type": "blob",
+      "bytes": 26628,
+      "sha256": "cce0ad7474cad68e69e84cefa7189dcc7564d4f3f904dea35ef975542addb9be"
+    },
+    {
+      "oid": "ca22714b86027eeaffe334037cfea031668cdf1b",
+      "type": "blob",
+      "bytes": 3242,
+      "sha256": "d044efd69556cd9c40c10d04e62e358660f36d4f1172c554404fd25bc1562d62"
+    },
+    {
+      "oid": "d01f40d688f49509eec6edff500c545a61099c1a",
+      "type": "blob",
+      "bytes": 9997,
+      "sha256": "139d5ad4c0ad29c8bbaeeca14b97c624cd0c7ad81dbff0c1213faa89aac5f315"
+    },
+    {
+      "oid": "d7667221f413c96af2656a5646bf7b6549b075d2",
+      "type": "tree",
+      "bytes": 29,
+      "sha256": "ee5c1174d3b44396a5c0f7fd30147b8377a9a05a4dc55566f3506762299839fc"
+    },
+    {
+      "oid": "e290641699b7cd19cafe04011e2b02c468de2183",
+      "type": "blob",
+      "bytes": 8559,
+      "sha256": "f23b4427808d671e7bd79b053b37ca50f853a158290df46b98bb4727e8d48f7b"
+    },
+    {
+      "oid": "e3c5d0e087558d1afea033131bce62a8752553bc",
+      "type": "blob",
+      "bytes": 6933,
+      "sha256": "8beba814dda3b1e14fd4055e13e4b4f037dbc14cc8ae48ed588114c178b7165b"
+    },
+    {
+      "oid": "e72054022bb19be37c54877a5aaa6105786a3f0d",
+      "type": "blob",
+      "bytes": 14395,
+      "sha256": "bba23d436eebd75b9a5ab8eacd21f6a009ee98dff553b6d588953b1d2a2ec1d1"
+    },
+    {
+      "oid": "e84422a8e4dca866dceed68295d0d65266f45594",
+      "type": "blob",
+      "bytes": 8297,
+      "sha256": "2248e8b24613b8029a371809783b88f5282a8a2755334a89a7d7153c05040be3"
+    },
+    {
+      "oid": "ec11f19b6fc936e5d0edf77a3b2d3c965474cd68",
+      "type": "blob",
+      "bytes": 13939,
+      "sha256": "86957acadaa493003d2e206f06388c269311301a7caa9c73c8f6302b80c44592"
+    },
+    {
+      "oid": "efb3788a630436591dbffed970be6a2804621c46",
+      "type": "blob",
+      "bytes": 2536,
+      "sha256": "643f96c586d65267eea036783f61d92b9627c7480fc952ec7b246e554c04727a"
+    },
+    {
+      "oid": "f131d7e95f867e47e4e68342ac388e669cdf28a2",
+      "type": "blob",
+      "bytes": 26555,
+      "sha256": "406fd781b2f45cad64bd7134120d6e3ab34784a2beb3b49ba3eee72884edeebb"
+    },
+    {
+      "oid": "fef0288b07e8d5b430fdbe3815c9852a6c58947c",
+      "type": "tree",
+      "bytes": 1217,
+      "sha256": "fb2443f2564d6d99fe208777b1ac969da4af31698b4d1e9faafa7e72219ab574"
+    }
+  ],
+  "registrations": [
+    {
+      "commit": "90fecf74f2cbfeaf52618688681c366430604042",
+      "registration_path": "v3/registration.json",
+      "registration_sha256": "d044efd69556cd9c40c10d04e62e358660f36d4f1172c554404fd25bc1562d62",
+      "registered_utc": "2026-11-15T16:50:17.447698+00:00",
+      "publication_record": {
+        "path": "v3/public-registration.json",
+        "sha256": "d610f697f57441b1e9bde45fc599f1431120d5c8ab23412a90b2471be1d8a15d",
+        "publication_boundary_utc": "2026-11-15T16:53:18Z",
+        "references": {
+          "commit_url": "https://github.com/Alien6-Studio/research-rag-evidence/commit/90fecf74f2cbfeaf52618688681c366430604042",
+          "github_pull_request_url": "https://github.com/Alien6-Studio/research-rag-evidence/pull/15",
+          "protocol_tag": "protocol-rag-v3-2026-11-15"
+        }
+      },
+      "bindings": [
+        {
+          "path": "requirements-lock.txt",
+          "blob_oid": "327d26c3d45e6089ddeafa78bfbfa2a60bb497b5",
+          "sha256": "ae6c888daf34b6a7f26569ac2dc56013f446e405959f000f6f9900414252a6c4"
+        },
+        {
+          "path": "run.py",
+          "blob_oid": "a90243ee36b981fe6b331a1887a5db8846767168",
+          "sha256": "9028549e2d3e165bdffa7c5704d565ed0ebeeca3e170184571198ed72a5f4bfa"
+        },
+        {
+          "path": "sources.json",
+          "blob_oid": "256505ecd8c06195584a822e24a391d4deac1fe2",
+          "sha256": "5dcf2a109f9847c0dd654d662895875caa8bfda683b11f490fe99d073d4460a7"
+        },
+        {
+          "path": "v3/LITERATURE.md",
+          "blob_oid": "e290641699b7cd19cafe04011e2b02c468de2183",
+          "sha256": "f23b4427808d671e7bd79b053b37ca50f853a158290df46b98bb4727e8d48f7b"
+        },
+        {
+          "path": "v3/PROTOCOL.md",
+          "blob_oid": "69f3ea142f65319397209978d136332997a89925",
+          "sha256": "0a53d765baacc533ed56ce3b372a7cdfd5ee1e62d8421aab431ee5c09b7b8641"
+        },
+        {
+          "path": "v3/__init__.py",
+          "blob_oid": "5644323bbae1910eeb2f558741134a1837eab3be",
+          "sha256": "e0a6080316c70a1276bca4cd2bbac9abccf28352d0054cbccdfb48af4770cf71"
+        },
+        {
+          "path": "v3/analysis.py",
+          "blob_oid": "8b9900b08bce5f3cdf5a280a04c4afd517a90e11",
+          "sha256": "b5979c90cda8bff469513c61e7a38d2dc533902af5dc815fd1ade0301d919bae"
+        },
+        {
+          "path": "v3/annotation.py",
+          "blob_oid": "39296d5fcfe61c12f237873ac69fcc070792565d",
+          "sha256": "0a3c69f1f4e85e3a8fb1b87b8d1a5c0fb6916044d9ed1ce27403035ffefdd3bd"
+        },
+        {
+          "path": "v3/archive.py",
+          "blob_oid": "a869eaef05ba8bc01ed89f98c2263ebb0b158d29",
+          "sha256": "f26e1e91aa70f2410661440f7fe980085100ae9b6744457f3b49aaddcc819985"
+        },
+        {
+          "path": "v3/benchmark.py",
+          "blob_oid": "75c1d688f828119ce9989d37bb02cfadb1d17251",
+          "sha256": "c7f19f5ca9677d0bc844c36d04f536552a022cfed7f2ea46bafae788fbae1a72"
+        },
+        {
+          "path": "v3/core.py",
+          "blob_oid": "ec11f19b6fc936e5d0edf77a3b2d3c965474cd68",
+          "sha256": "86957acadaa493003d2e206f06388c269311301a7caa9c73c8f6302b80c44592"
+        },
+        {
+          "path": "v3/data/cohorts.json",
+          "blob_oid": "2e07343cc05e2411213d4264d7c9fd0766737c0b",
+          "sha256": "af6d3d4b21a0857e193c036cf7a1bb1616e9d523da0f826fe37d76a7383e72fe"
+        },
+        {
+          "path": "v3/data/power-planning.json",
+          "blob_oid": "4ad1e27dd0a28d3ca0a867b8125931943e36536a",
+          "sha256": "a2199ae2063eeba30938f8546b3d348bcfd91ba688ef79d703b68ab1525b47b4"
+        },
+        {
+          "path": "v3/design.py",
+          "blob_oid": "d01f40d688f49509eec6edff500c545a61099c1a",
+          "sha256": "139d5ad4c0ad29c8bbaeeca14b97c624cd0c7ad81dbff0c1213faa89aac5f315"
+        },
+        {
+          "path": "v3/environment.json",
+          "blob_oid": "a35f1ab1b64e4cc9b894e00f89e5a4ee7e18bd61",
+          "sha256": "27cb3185a2c9a1101ff27e18ea90fec6630b2f25d2918ebfa523784f712bf0d1"
+        },
+        {
+          "path": "v3/historical-preservation.json",
+          "blob_oid": "2da60252f2ab109dac2367aa10907841990657b0",
+          "sha256": "2760fc4d21cfba96466100a210b10093a995a255bab4104e69d73e0a372e60f3"
+        },
+        {
+          "path": "v3/registration.json",
+          "blob_oid": "ca22714b86027eeaffe334037cfea031668cdf1b",
+          "sha256": "d044efd69556cd9c40c10d04e62e358660f36d4f1172c554404fd25bc1562d62"
+        },
+        {
+          "path": "v3/test_analysis.py",
+          "blob_oid": "5139a51c606f79ac34c9146f91b2ec4d3d3c5785",
+          "sha256": "7eb9880117015064b7c52b215f38284cf1205863a7a38a5551bf3ee5ca60896c"
+        },
+        {
+          "path": "v3/test_annotation.py",
+          "blob_oid": "e3c5d0e087558d1afea033131bce62a8752553bc",
+          "sha256": "8beba814dda3b1e14fd4055e13e4b4f037dbc14cc8ae48ed588114c178b7165b"
+        },
+        {
+          "path": "v3/test_archive.py",
+          "blob_oid": "afb9b14abcfd8f3cfb527ea19582f91db67887db",
+          "sha256": "8540d231f7458055ee71913b9c34b196a5583b4dc7b9d33a312ac105162bb829"
+        },
+        {
+          "path": "v3/test_benchmark.py",
+          "blob_oid": "128be0a90b63b28c42fa6a94339c054898c523d6",
+          "sha256": "862a692de0b75efef0faae9a5788ba70756f930621b1c7f670aa4306a0a4a710"
+        },
+        {
+          "path": "v3/test_core.py",
+          "blob_oid": "e72054022bb19be37c54877a5aaa6105786a3f0d",
+          "sha256": "bba23d436eebd75b9a5ab8eacd21f6a009ee98dff553b6d588953b1d2a2ec1d1"
+        },
+        {
+          "path": "v3/test_design.py",
+          "blob_oid": "815f8e37665b2c4ef296994e3ecec112d522ff73",
+          "sha256": "08ee3b40ce8acde34976ca8c464216d3af9aa71e215dc3714302b6feb3cc0488"
+        },
+        {
+          "path": "v3/test_verify.py",
+          "blob_oid": "76a40682d1225810b69ad0e642378f32d8d8c3af",
+          "sha256": "4415effeba4748e68f974ac29b0b7733910cbd64a1e58be7e701944ad9c1bba9"
+        },
+        {
+          "path": "v3/verify.py",
+          "blob_oid": "c582246332bf2620cff18cae4a9f1449bed24aeb",
+          "sha256": "cce0ad7474cad68e69e84cefa7189dcc7564d4f3f904dea35ef975542addb9be"
+        }
+      ]
+    },
+    {
+      "commit": "62657fd9774943b09552f8a9895e7877243a8664",
+      "registration_path": "v3/registration-amendment-01.json",
+      "registration_sha256": "0b868b6460492e8f0784b94ea9a69dc389cf0f96a7aedd2414267b92bac896db",
+      "registered_utc": "2026-11-15T17:10:51.791241+00:00",
+      "publication_record": {
+        "path": "v3/public-registration-amendment-01.json",
+        "sha256": "adcd805ab3c49a0dd4eb8d221dc5daccc4c59a0c80e9ff63b2ce9e98e75ad958",
+        "publication_boundary_utc": "2026-11-15T17:14:23Z",
+        "references": {
+          "commit_url": "https://github.com/Alien6-Studio/research-rag-evidence/commit/62657fd9774943b09552f8a9895e7877243a8664",
+          "release_url": "https://github.com/Alien6-Studio/research-rag-evidence/releases/tag/protocol-rag-v3-2026-11-15-a1",
+          "protocol_tag": "protocol-rag-v3-2026-11-15-a1"
+        }
+      },
+      "bindings": [
+        {
+          "path": "requirements-lock.txt",
+          "blob_oid": "327d26c3d45e6089ddeafa78bfbfa2a60bb497b5",
+          "sha256": "ae6c888daf34b6a7f26569ac2dc56013f446e405959f000f6f9900414252a6c4"
+        },
+        {
+          "path": "run.py",
+          "blob_oid": "a90243ee36b981fe6b331a1887a5db8846767168",
+          "sha256": "9028549e2d3e165bdffa7c5704d565ed0ebeeca3e170184571198ed72a5f4bfa"
+        },
+        {
+          "path": "sources.json",
+          "blob_oid": "256505ecd8c06195584a822e24a391d4deac1fe2",
+          "sha256": "5dcf2a109f9847c0dd654d662895875caa8bfda683b11f490fe99d073d4460a7"
+        },
+        {
+          "path": "v3/AMENDMENT-01.md",
+          "blob_oid": "1443a6dc30c74cbbdca95a793292e4764bcb95a9",
+          "sha256": "1f7609a2af6df09d1b0ce70ca5ba7de011d5fe1a2d9802ab65fa4a37bf944d39"
+        },
+        {
+          "path": "v3/LITERATURE.md",
+          "blob_oid": "e290641699b7cd19cafe04011e2b02c468de2183",
+          "sha256": "f23b4427808d671e7bd79b053b37ca50f853a158290df46b98bb4727e8d48f7b"
+        },
+        {
+          "path": "v3/PROTOCOL.md",
+          "blob_oid": "69f3ea142f65319397209978d136332997a89925",
+          "sha256": "0a53d765baacc533ed56ce3b372a7cdfd5ee1e62d8421aab431ee5c09b7b8641"
+        },
+        {
+          "path": "v3/__init__.py",
+          "blob_oid": "5644323bbae1910eeb2f558741134a1837eab3be",
+          "sha256": "e0a6080316c70a1276bca4cd2bbac9abccf28352d0054cbccdfb48af4770cf71"
+        },
+        {
+          "path": "v3/amendments/01/prior-evidence.json",
+          "blob_oid": "e84422a8e4dca866dceed68295d0d65266f45594",
+          "sha256": "2248e8b24613b8029a371809783b88f5282a8a2755334a89a7d7153c05040be3"
+        },
+        {
+          "path": "v3/analysis.py",
+          "blob_oid": "8b9900b08bce5f3cdf5a280a04c4afd517a90e11",
+          "sha256": "b5979c90cda8bff469513c61e7a38d2dc533902af5dc815fd1ade0301d919bae"
+        },
+        {
+          "path": "v3/annotation.py",
+          "blob_oid": "3940bb046f372fa28977774e081c3f3f347b1b3f",
+          "sha256": "8278a200783fd02021b92bb18f3a745ad8df41b75f9626c74dc2a2465ea9fda9"
+        },
+        {
+          "path": "v3/archive.py",
+          "blob_oid": "6155427183b0e590841f0cab882bad6e41b98f16",
+          "sha256": "c122a6688fd6189b39792c4798e4afa4d299a9b69785afa223f881e869dc6365"
+        },
+        {
+          "path": "v3/benchmark.py",
+          "blob_oid": "36b701cf5a5bf499a5dcfb022e2463fb9d57b439",
+          "sha256": "b0aa3ebc2bba7483ef2ce29eba5c378a194e2fb3271950c84114f5ae8ba00754"
+        },
+        {
+          "path": "v3/core.py",
+          "blob_oid": "ec11f19b6fc936e5d0edf77a3b2d3c965474cd68",
+          "sha256": "86957acadaa493003d2e206f06388c269311301a7caa9c73c8f6302b80c44592"
+        },
+        {
+          "path": "v3/data/cohorts-amendment-01.json",
+          "blob_oid": "72ae2cf42ed507d405d8083612d8afa539733030",
+          "sha256": "2adb7f010e3bee6df7786ee585ef37f13c14f0fcc9ebf0823761e7e08a2e1a9d"
+        },
+        {
+          "path": "v3/data/cohorts.json",
+          "blob_oid": "2e07343cc05e2411213d4264d7c9fd0766737c0b",
+          "sha256": "af6d3d4b21a0857e193c036cf7a1bb1616e9d523da0f826fe37d76a7383e72fe"
+        },
+        {
+          "path": "v3/data/power-planning.json",
+          "blob_oid": "4ad1e27dd0a28d3ca0a867b8125931943e36536a",
+          "sha256": "a2199ae2063eeba30938f8546b3d348bcfd91ba688ef79d703b68ab1525b47b4"
+        },
+        {
+          "path": "v3/design.py",
+          "blob_oid": "81e78dabfd7661b59ab51456d2eb431c7b7ba3be",
+          "sha256": "7710f742096b4d22c13fd59670f56dd9b1d7a8e039c7dd2ebde1129ca32e1f4e"
+        },
+        {
+          "path": "v3/environment.json",
+          "blob_oid": "a35f1ab1b64e4cc9b894e00f89e5a4ee7e18bd61",
+          "sha256": "27cb3185a2c9a1101ff27e18ea90fec6630b2f25d2918ebfa523784f712bf0d1"
+        },
+        {
+          "path": "v3/historical-preservation.json",
+          "blob_oid": "2da60252f2ab109dac2367aa10907841990657b0",
+          "sha256": "2760fc4d21cfba96466100a210b10093a995a255bab4104e69d73e0a372e60f3"
+        },
+        {
+          "path": "v3/public-registration.json",
+          "blob_oid": "026f9aeddba670d3623d3c65d9ff25ae8f3ad039",
+          "sha256": "d610f697f57441b1e9bde45fc599f1431120d5c8ab23412a90b2471be1d8a15d"
+        },
+        {
+          "path": "v3/registration-amendment-01.json",
+          "blob_oid": "503e624a725fe27ab9501046e97e12c81caf5b99",
+          "sha256": "0b868b6460492e8f0784b94ea9a69dc389cf0f96a7aedd2414267b92bac896db"
+        },
+        {
+          "path": "v3/registration.json",
+          "blob_oid": "ca22714b86027eeaffe334037cfea031668cdf1b",
+          "sha256": "d044efd69556cd9c40c10d04e62e358660f36d4f1172c554404fd25bc1562d62"
+        },
+        {
+          "path": "v3/test_analysis.py",
+          "blob_oid": "654ce706cc53b637da7a76adc604e1b3fc962138",
+          "sha256": "6613f58233e9bd921e43bd33e064c8eddfca6f57297e473f98baa6f0fc319e6e"
+        },
+        {
+          "path": "v3/test_annotation.py",
+          "blob_oid": "6bd23c67d5e059d111cbc83a3c3810a91a46e21a",
+          "sha256": "b0a51394a4304af88a747c55faef6fd031b99e9e51b0eee405ec315a0cfae04a"
+        },
+        {
+          "path": "v3/test_archive.py",
+          "blob_oid": "efb3788a630436591dbffed970be6a2804621c46",
+          "sha256": "643f96c586d65267eea036783f61d92b9627c7480fc952ec7b246e554c04727a"
+        },
+        {
+          "path": "v3/test_benchmark.py",
+          "blob_oid": "128be0a90b63b28c42fa6a94339c054898c523d6",
+          "sha256": "862a692de0b75efef0faae9a5788ba70756f930621b1c7f670aa4306a0a4a710"
+        },
+        {
+          "path": "v3/test_core.py",
+          "blob_oid": "e72054022bb19be37c54877a5aaa6105786a3f0d",
+          "sha256": "bba23d436eebd75b9a5ab8eacd21f6a009ee98dff553b6d588953b1d2a2ec1d1"
+        },
+        {
+          "path": "v3/test_design.py",
+          "blob_oid": "9381152b1b3b5cea60ebc30a0e9f1004cce1d1d1",
+          "sha256": "ad8310b58f6ebb2e9125d42575d533385e6751d156d233fe89e5ced2373a97bc"
+        },
+        {
+          "path": "v3/test_integration.py",
+          "blob_oid": "bf97ce920379939ba2fbd5ec98b531b67b9b0823",
+          "sha256": "211e7e3c87f8e83c0dc4e76ca28be35ae19fd543dcb8bbc61fb0521b7329db1e"
+        },
+        {
+          "path": "v3/test_verify.py",
+          "blob_oid": "f131d7e95f867e47e4e68342ac388e669cdf28a2",
+          "sha256": "406fd781b2f45cad64bd7134120d6e3ab34784a2beb3b49ba3eee72884edeebb"
+        },
+        {
+          "path": "v3/verify.py",
+          "blob_oid": "c0bb42fd5774929d48caed2b9b24f7b433c343c3",
+          "sha256": "d0501b56cc77a49e78366562bd29dd36b7efa8f1ee3dc3fe43dea834885fa84c"
+        }
+      ]
+    }
+  ]
+}

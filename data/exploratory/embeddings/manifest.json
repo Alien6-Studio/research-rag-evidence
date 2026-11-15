@@ -1,0 +1,205 @@
+{
+  "exported_at_utc": "2026-11-12T19:15:26.640028+00:00",
+  "vectors": 2608,
+  "dimensions": 768,
+  "source_model_digest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f",
+  "scope": "Exact float64 values loaded from the original JSON cache for all study questions and 2/3/6-sentence chunks. Export time is not the original capture time. Texts are HotpotQA-derived; CC BY-SA 4.0 attribution applies.",
+  "original_single_file_sha256": "49a63596ba29d3268586152a655e2b59d49c270dc5ddf8593206f143de2f21cc",
+  "original_single_file_bytes": 15845657,
+  "layout_updated_utc": "2026-11-12T19:40:08.771294+00:00",
+  "files": [
+    {
+      "path": "embeddings/2026-11-12-nomic/part-000.parquet",
+      "rows": 82,
+      "sha256": "850ddcac09da52d62cf1b0d5769e6da74fe9a11f3cefb4a5d13d8398b6c2b31f",
+      "bytes": 619970
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-001.parquet",
+      "rows": 82,
+      "sha256": "10fc9a7fc87dc228650cb56cc8d189744b0e3aa5c506a3babcae54e8c4a5f0a8",
+      "bytes": 618638
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-002.parquet",
+      "rows": 82,
+      "sha256": "c149de6f50d556c35a9d10e95d1c2bda617f94251d43cf110f59792948eef61c",
+      "bytes": 618713
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-003.parquet",
+      "rows": 82,
+      "sha256": "221fa5935551f2996382edc24314fb18c46b65e411eb33a2b92581fbfe36e573",
+      "bytes": 618607
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-004.parquet",
+      "rows": 82,
+      "sha256": "e05b8d89ce85b72f089b0b478d5ce1e5f024b878f6142adb243b77f497c8508c",
+      "bytes": 619690
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-005.parquet",
+      "rows": 82,
+      "sha256": "055c47c67c5cd5886b99c48e64ae8dac1cfc7787975d74c57dd674f7d035349c",
+      "bytes": 618578
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-006.parquet",
+      "rows": 82,
+      "sha256": "f460f2c6982b99bff2fbf5b6723d295b86b7d4c66fa5bc1741d743f66499a19f",
+      "bytes": 620560
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-007.parquet",
+      "rows": 82,
+      "sha256": "a4200b1838e64b9bcc7b325104fa1601c763bb15b129af2f5b3f959d27ad052f",
+      "bytes": 618551
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-008.parquet",
+      "rows": 82,
+      "sha256": "0192ebf22eb6cc80700d658a3e12ed525b5db5d6b8a8cde7ee6e264b0e297b69",
+      "bytes": 619282
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-009.parquet",
+      "rows": 82,
+      "sha256": "c293abdcba0d42fa261da5114498120fb460325825f38b041edb02335e3eca73",
+      "bytes": 618062
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-010.parquet",
+      "rows": 82,
+      "sha256": "fba5cec70ddba6153263c84a0e747c5aee17088d020f7803799b286f69b5f3b6",
+      "bytes": 618797
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-011.parquet",
+      "rows": 82,
+      "sha256": "9c9ab5abc15a833dddcb91e4c25ae21002cc1add7a937b9e53b6da67c8c23493",
+      "bytes": 619459
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-012.parquet",
+      "rows": 82,
+      "sha256": "1ccc9545a53cc3a1ed70fdbb0b468abdab466f9d5231d32bcfd10d330614fa4b",
+      "bytes": 619196
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-013.parquet",
+      "rows": 82,
+      "sha256": "687b18f9ce938065046776959cc233a0674c811c13380e1544fbc8cf818a81ad",
+      "bytes": 618018
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-014.parquet",
+      "rows": 82,
+      "sha256": "be5a0a342118cc4f860b86e78aea7c4f87786512c1d1a78358f58c34a5fad55b",
+      "bytes": 620000
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-015.parquet",
+      "rows": 82,
+      "sha256": "939286b24b49d0e258112b7e287e8324c3119556c96d161e492c3e9662905187",
+      "bytes": 618329
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-016.parquet",
+      "rows": 82,
+      "sha256": "5e7889fd4746bc7cbbd15f30e15fe2ae148011c95941cf60536aea1a2eb2a0dc",
+      "bytes": 617886
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-017.parquet",
+      "rows": 82,
+      "sha256": "4cf2cda083acfa0826156593cfd0aee815c6da73fd3ac4387a596ba7f166194c",
+      "bytes": 619391
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-018.parquet",
+      "rows": 82,
+      "sha256": "c24a53c678a43dac5907ceb0b8f69136cfe4e2e713b19fe6077fcd170600fca3",
+      "bytes": 620034
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-019.parquet",
+      "rows": 82,
+      "sha256": "a38a4c2af272595abeb7fedf45f155279271bbbd67381173b03ad8dfe0de5df8",
+      "bytes": 620098
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-020.parquet",
+      "rows": 82,
+      "sha256": "bc387724e3b98f104b4e2e238a24d4af40a4de94b041b2b64221478907e72353",
+      "bytes": 618923
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-021.parquet",
+      "rows": 82,
+      "sha256": "dac76eba57b03841a6ea95c896da7da30a6d58000763400c536bb328f19bdad1",
+      "bytes": 618627
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-022.parquet",
+      "rows": 82,
+      "sha256": "f3fb18fec3fe82b9fd978392a99d186f83ec854d2b486b3cf590a01d79f87f71",
+      "bytes": 619040
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-023.parquet",
+      "rows": 82,
+      "sha256": "476654bc197fc54dc8df0a7788137f6160f831bcfd439de40065142bcdb1cc1a",
+      "bytes": 619778
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-024.parquet",
+      "rows": 82,
+      "sha256": "0301b41539ec9ecb7bffcfd2f3b3595fe7052b58826c252dce40294c9c367b50",
+      "bytes": 619739
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-025.parquet",
+      "rows": 82,
+      "sha256": "8aba62401e37dff51586ce0ac5db95c0e47c30da8556df5523fbc4fda9ac7adc",
+      "bytes": 620356
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-026.parquet",
+      "rows": 82,
+      "sha256": "8743bd099eec654bb4c4c13db167aff43fd061df49e25b9b0537b0e578dfa551",
+      "bytes": 619574
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-027.parquet",
+      "rows": 82,
+      "sha256": "f7fefe6890d5f729f85f2557a5eb4013e231d0070b331daddbe78122150be27c",
+      "bytes": 620376
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-028.parquet",
+      "rows": 82,
+      "sha256": "cd0affa40641700bcf2e31980317909d3bb0a0fec6f6b66e0082771184bb401b",
+      "bytes": 618494
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-029.parquet",
+      "rows": 82,
+      "sha256": "7e06be15e63b90bc0f5bf22cdaca887f4e812d874cd19393cdcb0192712e6643",
+      "bytes": 620438
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-030.parquet",
+      "rows": 82,
+      "sha256": "1f5365e77e37ad236d9fa76ce77ff35a13ca0c4aa510f9ea5def5570b5e1196d",
+      "bytes": 618103
+    },
+    {
+      "path": "embeddings/2026-11-12-nomic/part-031.parquet",
+      "rows": 66,
+      "sha256": "6154982542dd3b43241cd0f520ca93b848783ddbabd9e38eca4eb49d52efc567",
+      "bytes": 496828
+    }
+  ],
+  "layout_note": "Lossless partitioning for reviewable signed commits; concatenated Arrow table checked exactly equal to the original float64 export."
+}

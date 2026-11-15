@@ -1,0 +1,82 @@
+{
+  "audit_utc": "2026-11-13T13:21:09.303576+00:00",
+  "auditor_sha256": "0175e8dd4b1486137c1a50f845e4d49466e9b82890a4b4af7079046d4a5814aa",
+  "historical_files_unchanged": 72,
+  "selected_question_ids_reproduced": 64,
+  "question_types": {
+    "comparison": 32,
+    "bridge": 32
+  },
+  "independently_recomputed_rankings": 128,
+  "independently_checked_transmitted_contexts_and_lexical_scores": 512,
+  "historical_aggregate_and_intervals_reproduced": true,
+  "generator_completion_reasons": {
+    "stop": 512
+  },
+  "control_question_types": {
+    "comparison": 10,
+    "bridge": 6
+  },
+  "gold_control_count": 16,
+  "gold_control_exact_matches": 5,
+  "shared_any_context_titles": {
+    "Ulrich Walter": [
+      "5a74a62b55429916b01641a0",
+      "5a83093c55429966c78a6b01"
+    ],
+    "Wale Adebanwi": [
+      "5a74a62b55429916b01641a0",
+      "5a7b215f55429931da12c9e3"
+    ],
+    "Augustine of Canterbury": [
+      "5a74a62b55429916b01641a0",
+      "5a7b215f55429931da12c9e3"
+    ],
+    "Despoina": [
+      "5a74a62b55429916b01641a0",
+      "5a7b215f55429931da12c9e3"
+    ],
+    "Elswyth Thane": [
+      "5a7b215f55429931da12c9e3",
+      "5ae074aa5542993d6555eb54"
+    ],
+    "Tryst (novel)": [
+      "5a7b215f55429931da12c9e3",
+      "5ae074aa5542993d6555eb54"
+    ],
+    "Cartoon Network (Middle East and Africa)": [
+      "5abbfb5e554299114383a0d0",
+      "5abffafe5542997d64295988"
+    ],
+    "Cartoon Network Too": [
+      "5abbfb5e554299114383a0d0",
+      "5abffafe5542997d64295988"
+    ]
+  },
+  "models_and_parameters_declared": {
+    "models": {
+      "generator": {
+        "name": "qwen3.6:latest",
+        "digest": "07d35212591fc27746f0a317c975a6d68754fb38e9053d82e25f06057af28522"
+      },
+      "embedding": {
+        "name": "nomic-embed-text:latest",
+        "digest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f"
+      },
+      "judge": {
+        "name": "dolphin3:latest",
+        "digest": "d5ab9ae8e1f22619a6be52e5694df422b7183a3883990a000188c363781ecb78"
+      }
+    },
+    "options": {
+      "temperature": 0,
+      "seed": 20261112,
+      "num_ctx": 8192,
+      "num_predict": 256,
+      "num_thread": 8
+    },
+    "ollama": "0.40.16"
+  },
+  "interpretation_limit": "Source hashes identify the measured instrument. No semantic labels are produced by this audit.",
+  "semantic_validation_status": "pending independent humans"
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "text": "Hello world.",
+    "tokenizer": 3,
+    "ollama": 3
+  },
+  {
+    "text": "Thirty seconds, then one retry after two seconds.",
+    "tokenizer": 10,
+    "ollama": 10
+  },
+  {
+    "text": "[d00s002] Paris is in France.",
+    "tokenizer": 13,
+    "ollama": 13
+  }
+]

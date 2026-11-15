@@ -1,0 +1,120 @@
+{
+  "reviewed_at_utc": "2026-11-12T19:11:31.914898+00:00",
+  "scope": "Exploratory review of all four rejected dataset-derived positive controls. No new semantic-accuracy metric or human-reviewed gold labels are established.",
+  "cases": [
+    {
+      "question_id": "5a7a06775542996a35c1708c",
+      "question": "Where did the Discovery Channel show franchise that Ben Bailey is an executive producer on originate from?",
+      "reference": "originated in the United Kingdom.",
+      "gold_evidence": [
+        {
+          "title": "Ben Bailey",
+          "sentence": 0,
+          "text": "Benjamin Ray Bailey (born October 30, 1970 in Bowling Green, Kentucky) is an American comedian, licensed taxi cab driver, and Emmy Award winning former game show host and executive producer for Discovery Channel's \"Cash Cab\" in New York City."
+        },
+        {
+          "title": "Cash Cab (U.S. game show)",
+          "sentence": 2,
+          "text": " It is part of the global \"Cash Cab\" franchise that originated in the United Kingdom."
+        }
+      ],
+      "original_judgement": {
+        "verdict": "unsupported",
+        "reason": "The cited text states that the 'Cash Cab' franchise originated in the United Kingdom, but it does not mention Ben Bailey or the Discovery Channel show franchise he is an executive producer on. The text does not establish that the show he is working on originated in the United Kingdom."
+      },
+      "exploratory_category": "supporting_chain_present_but_rejected_by_proxy",
+      "rationale": "The two annotated sentences explicitly connect Ben Bailey to Discovery Channel Cash Cab and the U.S. show to the global franchise originating in the United Kingdom. The proxy explanation overlooks that two-sentence chain.",
+      "reviewer_type": "assistant",
+      "independent_human_adjudication": false,
+      "changes_original_score": false
+    },
+    {
+      "question_id": "5a7e1cad55429965cec5ea75",
+      "question": "Was Pocahontas made before Born in China?",
+      "reference": "yes",
+      "gold_evidence": [
+        {
+          "title": "Pocahontas (1995 film)",
+          "sentence": 0,
+          "text": "Pocahontas is a 1995 American animated musical romantic-comedy-drama film produced by Walt Disney Feature Animation for Walt Disney Pictures."
+        },
+        {
+          "title": "Born in China",
+          "sentence": 0,
+          "text": "Born in China (我們誕生在中國) is a 2016 nature documentary film directed by Lu Chuan."
+        }
+      ],
+      "original_judgement": {
+        "verdict": "unsupported",
+        "reason": "The cited evidence does not establish the relationship between the release dates of Pocahontas and Born in China."
+      },
+      "exploratory_category": "supporting_chain_present_but_rejected_by_proxy",
+      "rationale": "The annotated text explicitly gives 1995 for Pocahontas and 2016 for Born in China. Under the dataset interpretation of made as the film year, this establishes the temporal ordering. The wording made does not independently distinguish production from release dates.",
+      "reviewer_type": "assistant",
+      "independent_human_adjudication": false,
+      "changes_original_score": false
+    },
+    {
+      "question_id": "5a80fd17554299260e20a1f1",
+      "question": "Was the 2007 documentary 'Zoo' more successful than the 1998 documentary 'Divine Trash'?",
+      "reference": "yes",
+      "gold_evidence": [
+        {
+          "title": "Zoo (2007 film)",
+          "sentence": 1,
+          "text": " The film's public debut was at the Sundance Film Festival in January 2007, where it was one of 16 winners out of 856 candidates."
+        },
+        {
+          "title": "Zoo (2007 film)",
+          "sentence": 2,
+          "text": " Following Sundance, it was selected as one of the top five American films to be presented at the Directors' Fortnight sidebar at the 2007 Cannes Film Festival."
+        },
+        {
+          "title": "Divine Trash",
+          "sentence": 0,
+          "text": "Divine Trash is a 1998 documentary film directed by Steve Yeager about the life and work of John Waters."
+        }
+      ],
+      "original_judgement": {
+        "verdict": "unsupported",
+        "reason": "The cited evidence does not compare the success of the two films."
+      },
+      "exploratory_category": "ambiguous_comparison_and_insufficient_comparative_evidence",
+      "rationale": "The question leaves successful undefined. The supplied gold sentences report festival selection for Zoo but only identify Divine Trash by year, director, and subject. They do not define a comparative success criterion or describe comparable success for Divine Trash. This is not a validated positive entailment control.",
+      "reviewer_type": "assistant",
+      "independent_human_adjudication": false,
+      "changes_original_score": false
+    },
+    {
+      "question_id": "5a7299465542992359bc3131",
+      "question": "What company was Luca Cordero di Montezemolo the chairman of that merged into a new Netherlands-based holding company Fiat Chrysler Automobiles NV?",
+      "reference": "Fabbrica Italiana Automobili Torino",
+      "gold_evidence": [
+        {
+          "title": "Fiat S.p.A.",
+          "sentence": 0,
+          "text": "Fiat S.p.A., or \"Fabbrica Italiana Automobili Torino\" (Italian Automobile Factory of Turin), was an Italian holding company whose original and core activities were in the automotive industry, and that was succeeded by Fiat Chrysler Automobiles NV (FCA)."
+        },
+        {
+          "title": "Fiat S.p.A.",
+          "sentence": 2,
+          "text": " On 29 January 2014, it was announced that Fiat S.p.A. (the former owner of Fiat Group) was to be merged into a new Netherlands-based holding company Fiat Chrysler Automobiles NV (FCA), took place before the end of 2014."
+        },
+        {
+          "title": "Luca Cordero di Montezemolo",
+          "sentence": 0,
+          "text": "Luca Cordero di Montezemolo (] ; born 31 August 1947) is an Italian businessman, former Chairman of Ferrari, and formerly Chairman of Fiat S.p.A. and President of Confindustria and FIEG."
+        }
+      ],
+      "original_judgement": {
+        "verdict": "unsupported",
+        "reason": "The cited text does not establish that Luca Cordero di Montezemolo was the chairman of Fabbrica Italiana Automobili Torino. It only mentions that he was the Chairman of Fiat S.p.A. and the merger into Fiat Chrysler Automobiles NV."
+      },
+      "exploratory_category": "supporting_chain_present_but_rejected_by_proxy",
+      "rationale": "The three sentences explicitly identify Fiat S.p.A. as an alias of Fabbrica Italiana Automobili Torino, name Montezemolo as former chairman, and describe the merger. The proxy explanation does not account for the explicit alias.",
+      "reviewer_type": "assistant",
+      "independent_human_adjudication": false,
+      "changes_original_score": false
+    }
+  ]
+}

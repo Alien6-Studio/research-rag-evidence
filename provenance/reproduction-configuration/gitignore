@@ -1,0 +1,21 @@
+.venv/
+/data/
+__pycache__/
+*.pyc
+.kubeconfig*
+*.log
+.venv
+.DS_Store
+
+/v2/runs/**/jobs.json
+/v2/runs/**/answers*.jsonl
+/v2/runs/**/intents*.jsonl
+
+/v2/runs/**/results.json
+/v2/verification.json
+/v2/reports/audit/historical-reanalysis/
+
+# V3 raw bytes are published losslessly with a separate SHA-256 manifest.
+/v3/runs/**/*.json
+/v3/runs/**/*.jsonl
+/v3/verification.json
